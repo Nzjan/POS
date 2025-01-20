@@ -118,7 +118,6 @@ class _LoginFormState extends ConsumerState<LoginForm> {
             MaterialPageRoute(builder: (context) => const HomeLayout()),
           );
         } else {
-
           // Set error state
           loginStateNotifier.setError('Login failed: ${responseBody['message']}');
         }

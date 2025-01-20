@@ -1,7 +1,11 @@
 import 'package:RMS/pages/menu/middle_screens/table_running_card.dart';
+import 'package:RMS/services/dio_service.dart';
+import 'package:RMS/services/shared_preferences_helper.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:RMS/pages/table/floor_select_bar.dart';
 import 'package:RMS/pages/table/table_select_bar.dart';
+import 'package:http/http.dart';
 import 'capacity_widget.dart';
 
 class TablePage extends StatefulWidget {
@@ -16,16 +20,55 @@ class _TablePageState extends State<TablePage> {
   String selectedTable = "All"; // Default selected table status filter
   Set<int> hoveredCards = {}; // Track hovered cards
 
-  final List<Map<String, dynamic>> tableData = [
-    {'status': 'Available', 'number': 'T - 1', 'floor': 'Floor 1', 'capacity': 4},
-    {'status': 'Reserved', 'number': 'T - 2', 'floor': 'Floor 1', 'capacity': 4, 'time': '13:00 - 14:00'},
-    {'status': 'Seated', 'number': 'T - 3', 'floor': 'Floor 1', 'capacity': 6},
-    {'status': 'Unavailable', 'number': 'T - 4', 'floor': 'Floor 1', 'capacity': 2},
-    {'status': 'Available', 'number': 'T - 5', 'floor': 'Floor 2', 'capacity': 8},
-    {'status': 'Seated', 'number': 'T - 6', 'floor': 'Floor 2', 'capacity': 8},
-    {'status': 'Reserved', 'number': 'T - 7', 'floor': 'Floor 2', 'capacity': 4, 'time': '15:00 - 16:00'},
-  ];
+  //  List<Map<String, dynamic>> tableData = [
+  //   {'status': 'Available', 'number': 'T - 1', 'floor': 'Floor 1', 'capacity': 4},
+  //   {'status': 'Reserved', 'number': 'T - 2', 'floor': 'Floor 1', 'capacity': 4, 'time': '13:00 - 14:00'},
+  //   {'status': 'Seated', 'number': 'T - 3', 'floor': 'Floor 1', 'capacity': 6},
+  //   {'status': 'Unavailable', 'number': 'T - 4', 'floor': 'Floor 1', 'capacity': 2},
+  //   {'status': 'Available', 'number': 'T - 5', 'floor': 'Floor 2', 'capacity': 8},
+  //   {'status': 'Seated', 'number': 'T - 6', 'floor': 'Floor 2', 'capacity': 8},
+  //   {'status': 'Reserved', 'number': 'T - 7', 'floor': 'Floor 2', 'capacity': 4, 'time': '15:00 - 16:00'},
+  // ];
+   List<Map<String,dynamic>> tableData=[];
 
+  void fetchTableData()async{
+    final _dio=DioService();
+     _dio.addToken(await SharedPreferencesHelper().getString("auth_token"));
+     try{
+       final res=await _dio.getData("http://82.180.147.87:8080/api/v1/:en/table");
+       if(res.statusCode==200){
+
+         final data=res.data;
+         debugPrint(data["data"][0].toString());
+         if(data["success"]==true){
+           List <Map<String,dynamic>> temp=[];
+           for(int i=0;i<data["data"].length;i++){
+             String status = data["data"][i]["status"];
+             status = status[0].toUpperCase() + status.substring(1);
+             debugPrint("data : ${data['data'][i]}");
+             temp.add({'status':status, 'number': data["data"][i]["name"], 'floor': data["data"][i]["floorPlan"]["name"], 'capacity':data["data"][i]["capacity"] },);
+           }
+           setState(() {
+             tableData=temp;
+           });
+         }
+       }
+
+     }on DioException catch(e){
+       debugPrint("Dio Exception");
+     }catch(e){
+       debugPrint(e.toString());
+     }
+
+
+
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    fetchTableData();
+  }
   // Function to filter tables based on selected floor and status
   List<Map<String, dynamic>> get filteredTables {
     return tableData.where((table) {
@@ -37,9 +80,6 @@ class _TablePageState extends State<TablePage> {
 
   // Helper method to format the floor as "F - X"
   String formatFloorForDisplay(String floor) {
-    if (floor == 'Floor 1') return 'F - 1';
-    if (floor == 'Floor 2') return 'F - 2';
-    if (floor == 'Floor 3') return 'F - 3';
     return floor; // If any other floor is passed, return as is.
   }
 
