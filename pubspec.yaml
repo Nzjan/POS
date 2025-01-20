@@ -51,6 +51,7 @@ dependencies:
   dio: ^5.0.0
   flutter_screenutil: ^5.9.3
   dropdown_button2: ^2.3.9
+  shared_preferences: ^2.3.5
 
 
 
