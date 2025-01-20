@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Vegetarian Delight Platter",
+    "price": 10.99,
+    "veg": true,
+    "image": "assets/images/recipe/platter/vegetarian_delight.jpeg"
+  },
+  {
+    "name": "BBQ Chicken Feast Platter",
+    "price": 12.99,
+    "veg": false,
+    "image": "assets/images/recipe/platter/bbq_chicken_feast.jpeg"
+  },
+  {
+    "name": "Grilled Seafood Platter",
+    "price": 13.99,
+    "veg": false,
+    "image": "assets/images/recipe/platter/grilled_seafood.jpeg"
+  },
+  {
+    "name": "Mixed Meat Platter",
+    "price": 14.49,
+    "veg": false,
+    "image": "assets/images/recipe/platter/mixed_meat_platter.jpeg"
+  },
+  {
+    "name": "Fresh Veggie Platter",
+    "price": 9.99,
+    "veg": true,
+    "image": "assets/images/recipe/platter/fresh_veggie_platter.jpeg"
+  },
+  {
+    "name": "Mediterranean Platter",
+    "price": 15.49,
+    "veg": true,
+    "image": "assets/images/recipe/platter/mediterranean_platter.jpeg"
+  },
+  {
+    "name": "Luxury Seafood Platter",
+    "price": 18.99,
+    "veg": false,
+    "image": "assets/images/recipe/platter/luxury_seafood_platter.jpeg"
+  },
+  {
+    "name": "Spicy Meat Lover’s Platter",
+    "price": 16.99,
+    "veg": false,
+    "image": "assets/images/recipe/platter/spicy_meat_lovers_platter.jpeg"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Luscious Tomato Soup",
+    "price": 6.99,
+    "veg": true,
+    "image": "assets/images/recipe/soup/luscious_tomato_soup.jpeg"
+  },
+  {
+    "name": "Creamy Mushroom Soup",
+    "price": 7.49,
+    "veg": true,
+    "image": "assets/images/recipe/soup/creamy_mushroom_soup.jpeg"
+  },
+  {
+    "name": "Spicy Thai Coconut Soup",
+    "price": 8.49,
+    "veg": true,
+    "image": "assets/images/recipe/soup/spicy_thai_coconut_soup.jpeg"
+  },
+  {
+    "name": "Hearty Chicken Soup",
+    "price": 8.99,
+    "veg": false,
+    "image": "assets/images/recipe/soup/hearty_chicken_soup.jpeg"
+  },
+  {
+    "name": "Classic French Onion Soup",
+    "price": 7.99,
+    "veg": true,
+    "image": "assets/images/recipe/soup/classic_french_onion_soup.jpeg"
+  },
+  {
+    "name": "Roasted Butternut Squash Soup",
+    "price": 6.49,
+    "veg": true,
+    "image": "assets/images/recipe/soup/roasted_butternut_squash_soup.jpeg"
+  },
+  {
+    "name": "Beef and Barley Soup",
+    "price": 9.29,
+    "veg": false,
+    "image": "assets/images/recipe/soup/beef_and_barley_soup.jpeg"
+  },
+  {
+    "name": "Spicy Lentil Soup",
+    "price": 6.79,
+    "veg": true,
+    "image": "assets/images/recipe/soup/spicy_lentil_soup.jpeg"
+  }
+]

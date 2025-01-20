@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Special Tomato Delight",
+    "price": 6.99,
+    "veg": true,
+    "image": "assets/images/recipe/special/special_tomato_delight.jpeg"
+  },
+  {
+    "name": "Special Creamy Mushroom",
+    "price": 7.49,
+    "veg": true,
+    "image": "assets/images/recipe/special/special_creamy_mushroom.jpeg"
+  },
+  {
+    "name": "Special Spicy Thai Coconut",
+    "price": 8.49,
+    "veg": true,
+    "image": "assets/images/recipe/special/special_spicy_thai_coconut.jpeg"
+  },
+  {
+    "name": "Special Hearty Chicken",
+    "price": 8.99,
+    "veg": false,
+    "image": "assets/images/recipe/special/special_hearty_chicken.jpeg"
+  },
+  {
+    "name": "Special French Onion",
+    "price": 7.99,
+    "veg": true,
+    "image": "assets/images/recipe/special/special_french_onion.jpeg"
+  },
+  {
+    "name": "Special Roasted Squash",
+    "price": 6.49,
+    "veg": true,
+    "image": "assets/images/recipe/special/special_roasted_squash.jpeg"
+  },
+  {
+    "name": "Special Beef and Barley",
+    "price": 9.29,
+    "veg": false,
+    "image": "assets/images/recipe/special/special_beef_and_barley.jpeg"
+  },
+  {
+    "name": "Special Spicy Lentil",
+    "price": 6.79,
+    "veg": true,
+    "image": "assets/images/recipe/special/special_spicy_lentil.jpeg"
+  }
+]

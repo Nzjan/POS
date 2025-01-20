@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Chocolate Cake",
+    "price": 4.99,
+    "veg": true,
+    "image": "assets/images/recipe/dessert/chocolate_cake.jpeg"
+  },
+  {
+    "name": "Ice Cream Sundae",
+    "price": 5.99,
+    "veg": true,
+    "image": "assets/images/recipe/dessert/ice_cream.jpeg"
+  },
+  {
+    "name": "Cheesecake",
+    "price": 6.49,
+    "veg": true,
+    "image": "assets/images/recipe/dessert/cheesecake.jpeg"
+  },
+  {
+    "name": "Brownie",
+    "price": 3.99,
+    "veg": true,
+    "image": "assets/images/recipe/dessert/brownie.jpeg"
+  },
+  {
+    "name": "Cupcake",
+    "price": 2.99,
+    "veg": true,
+    "image": "assets/images/recipe/dessert/cupcake.jpeg"
+  },
+  {
+    "name": "Tiramisu",
+    "price": 5.49,
+    "veg": true,
+    "image": "assets/images/recipe/dessert/tiramisu.jpeg"
+  },
+  {
+    "name": "Fruit Tart",
+    "price": 4.99,
+    "veg": true,
+    "image": "assets/images/recipe/dessert/fruit_tart.jpeg"
+  },
+  {
+    "name": "Macaron",
+    "price": 3.49,
+    "veg": true,
+    "image": "assets/images/recipe/dessert/macaron.jpeg"
+  }
+]

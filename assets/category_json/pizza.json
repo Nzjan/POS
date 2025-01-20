@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Margherita Pizza",
+    "price": 10.99,
+    "veg": true,
+    "image": "assets/images/recipe/pizza/margherita.jpeg"
+  },
+  {
+    "name": "Pepperoni Pizza",
+    "price": 12.99,
+    "veg": false,
+    "image": "assets/images/recipe/pizza/pepperoni.png"
+  },
+  {
+    "name": "BBQ Chicken Pizza",
+    "price": 13.99,
+    "veg": false,
+    "image": "assets/images/recipe/pizza/bbq_chicken.jpeg"
+  },
+  {
+    "name": "Hawaiian Pizza",
+    "price": 11.99,
+    "veg": true,
+    "image": "assets/images/recipe/pizza/hawaiian.jpg"
+  },
+  {
+    "name": "Veggie Pizza",
+    "price": 9.99,
+    "veg": true,
+    "image": "assets/images/recipe/pizza/veggie.jpeg"
+  },
+  {
+    "name": "Four Cheese Pizza",
+    "price": 14.99,
+    "veg": true,
+    "image": "assets/images/recipe/pizza/cheese.jpg"
+  },
+  {
+    "name": "Meat Lovers Pizza",
+    "price": 15.99,
+    "veg": false,
+    "image": "assets/images/recipe/pizza/meat_lovers.jpeg"
+  },
+  {
+    "name": "Spinach & Feta Pizza",
+    "price": 12.49,
+    "veg": true,
+    "image": "assets/images/recipe/pizza/spinach_feta.jpeg"
+  }
+]

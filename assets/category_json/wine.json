@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Chardonnay",
+    "price": 12.99,
+    "veg": true,
+    "image": "assets/images/recipe/wine/chardonnay.jpeg"
+  },
+  {
+    "name": "Merlot",
+    "price": 14.99,
+    "veg": true,
+    "image": "assets/images/recipe/wine/merlot.jpeg"
+  },
+  {
+    "name": "Cabernet Sauvignon",
+    "price": 16.99,
+    "veg": true,
+    "image": "assets/images/recipe/wine/cabernet.jpeg"
+  },
+  {
+    "name": "Pinot Noir",
+    "price": 15.99,
+    "veg": true,
+    "image": "assets/images/recipe/wine/pinot_noir.jpeg"
+  },
+  {
+    "name": "Sauvignon Blanc",
+    "price": 13.49,
+    "veg": true,
+    "image": "assets/images/recipe/wine/sauvignon.jpeg"
+  },
+  {
+    "name": "Rosé",
+    "price": 11.99,
+    "veg": true,
+    "image": "assets/images/recipe/wine/rose.jpeg"
+  },
+  {
+    "name": "Zinfandel",
+    "price": 14.49,
+    "veg": true,
+    "image": "assets/images/recipe/wine/zinfandel.jpeg"
+  },
+  {
+    "name": "Prosecco",
+    "price": 10.99,
+    "veg": true,
+    "image": "assets/images/recipe/wine/prosecco.jpeg"
+  }
+]

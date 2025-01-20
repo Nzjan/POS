@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Espresso",
+    "price": 3.99,
+    "veg": true,
+    "image": "assets/images/recipe/coffee/espresso.jpeg"
+  },
+  {
+    "name": "Americano",
+    "price": 4.49,
+    "veg": true,
+    "image": "assets/images/recipe/coffee/americano.jpeg"
+  },
+  {
+    "name": "Cappuccino",
+    "price": 4.99,
+    "veg": true,
+    "image": "assets/images/recipe/coffee/cappuccino.jpeg"
+  },
+  {
+    "name": "Latte",
+    "price": 5.49,
+    "veg": true,
+    "image": "assets/images/recipe/coffee/latte.jpeg"
+  },
+  {
+    "name": "Mocha",
+    "price": 5.99,
+    "veg": true,
+    "image": "assets/images/recipe/coffee/mocha.jpeg"
+  },
+  {
+    "name": "Macchiato",
+    "price": 4.79,
+    "veg": true,
+    "image": "assets/images/recipe/coffee/macchiato.jpeg"
+  },
+  {
+    "name": "Flat White",
+    "price": 5.29,
+    "veg": true,
+    "image": "assets/images/recipe/coffee/flat_white.jpeg"
+  },
+  {
+    "name": "Affogato",
+    "price": 6.49,
+    "veg": true,
+    "image": "assets/images/recipe/coffee/affogato.jpeg"
+  }
+]

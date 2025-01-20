@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Cheese Burger",
+    "price": 8.99,
+    "veg": false,
+    "image": "assets/images/recipe/burger/cheese_burger.jpeg"
+  },
+  {
+    "name": "Veggie Burger",
+    "price": 7.99,
+    "veg": true,
+    "image": "assets/images/recipe/burger/veggie_burger.jpg"
+  },
+  {
+    "name": "Bacon Burger",
+    "price": 9.99,
+    "veg": false,
+    "image": "assets/images/recipe/burger/bacon_burger.jpeg"
+  },
+  {
+    "name": "Chicken Burger",
+    "price": 8.49,
+    "veg": false,
+    "image": "assets/images/recipe/burger/chicken_burger.jpeg"
+  },
+  {
+    "name": "Mushroom Swiss Burger",
+    "price": 10.99,
+    "veg": false,
+    "image": "assets/images/recipe/burger/mushroom_swiss.jpeg"
+  },
+  {
+    "name": "Double Cheese Burger",
+    "price": 11.99,
+    "veg": false,
+    "image": "assets/images/recipe/burger/double_cheese.jpeg"
+  },
+  {
+    "name": "Spicy Burger",
+    "price": 9.49,
+    "veg": false,
+    "image": "assets/images/recipe/burger/spicy_burger.jpeg"
+  },
+  {
+    "name": "Fish Burger",
+    "price": 10.49,
+    "veg": false,
+    "image": "assets/images/recipe/burger/fish_burger.jpeg"
+  }
+]

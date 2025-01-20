@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Orange Juice",
+    "price": 3.99,
+    "veg": true,
+    "image": "assets/images/recipe/juice/orange_juice.jpeg"
+  },
+  {
+    "name": "Apple Juice",
+    "price": 4.49,
+    "veg": true,
+    "image": "assets/images/recipe/juice/apple_juice.jpeg"
+  },
+  {
+    "name": "Grape Juice",
+    "price": 4.99,
+    "veg": true,
+    "image": "assets/images/recipe/juice/grape_juice.jpeg"
+  },
+  {
+    "name": "Mango Juice",
+    "price": 5.49,
+    "veg": true,
+    "image": "assets/images/recipe/juice/mango_juice.jpeg"
+  },
+  {
+    "name": "Carrot Juice",
+    "price": 3.79,
+    "veg": true,
+    "image": "assets/images/recipe/juice/carrot_juice.jpeg"
+  },
+  {
+    "name": "Pineapple Juice",
+    "price": 4.29,
+    "veg": true,
+    "image": "assets/images/recipe/juice/pineapple_juice.jpeg"
+  },
+  {
+    "name": "Cranberry Juice",
+    "price": 4.79,
+    "veg": true,
+    "image": "assets/images/recipe/juice/cranberry_juice.jpeg"
+  },
+  {
+    "name": "Watermelon Juice",
+    "price": 4.99,
+    "veg": true,
+    "image": "assets/images/recipe/juice/watermelon_juice.jpeg"
+  }
+]
