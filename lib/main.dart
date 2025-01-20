@@ -1,4 +1,5 @@
 import 'package:RMS/home_layout.dart';
+import 'package:RMS/login_screen.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -37,7 +38,7 @@ class _EntryPageState extends State<EntryPage> {
         Navigator.pushReplacement(
           context,
           //FluentPageRoute(builder: (context) =>  LoginScreen()),
-          FluentPageRoute(builder: (context) => const HomeLayout()),
+          FluentPageRoute(builder: (context) =>  LoginScreen()),
         );
       }
     });

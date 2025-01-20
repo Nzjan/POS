@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPrefrencesHelper{
+class SharedPreferencesHelper{
   SharedPreferences? pref;
 
   void storeString(String key,String value)async{
@@ -13,5 +13,11 @@ class SharedPrefrencesHelper{
     String value=( pref?.getString(key))??"not found";
     return value;
   }
+
+  void removeString(String key)async{
+    pref=await SharedPreferences.getInstance();
+    await pref?.remove(key);
+  }
+
 
 }

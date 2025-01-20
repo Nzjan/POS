@@ -1,3 +1,4 @@
+import 'package:RMS/services/shared_preferences_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio/dio.dart';
@@ -109,22 +110,26 @@ class _LoginFormState extends ConsumerState<LoginForm> {
         Map<String, dynamic> responseBody = response.data;
 
         if (responseBody['success'] == true) {
+           SharedPreferencesHelper().storeString("auth_token", "Bearer ${responseBody["data"]["token"]}");
+
           loginStateNotifier.setSuccess();
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const HomeLayout()),
           );
         } else {
+
           // Set error state
           loginStateNotifier.setError('Login failed: ${responseBody['message']}');
         }
       } else {
+
         // Set error state
         loginStateNotifier.setError('Failed to authenticate. Please try again.');
       }
     } on DioException catch (e) {
       // Handle Dio specific errors
-      loginStateNotifier.setError('An error occurred: ${e.message}');
+      loginStateNotifier.setError('Invalid Credentials');
     } catch (e) {
       // Set error state for any other errors
       loginStateNotifier.setError('An unexpected error occurred. Please try again.');
