@@ -99,10 +99,10 @@ flutter:
     - assets/images/recipe/juice/
     - assets/images/recipe/coffee/
     - assets/images/recipe/dessert/
-    - assets/images/recipe/platter/
-    - assets/images/recipe/rammen/
-    - assets/images/recipe/soup/
-    - assets/images/recipe/special/
+#    - assets/images/recipe/platter/
+#    - assets/images/recipe/rammen/
+#    - assets/images/recipe/soup/
+#    - assets/images/recipe/special/
     - assets/images/dashboard_icons/
     - assets/category_json/
     - assets/
