@@ -1,5 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import ScreenUtil
 
 class GuestFlowAnalysis extends StatefulWidget {
   @override
@@ -10,15 +11,15 @@ class _GuestFlowAnalysisState extends State<GuestFlowAnalysis> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 393,
-      padding: const EdgeInsets.all(16),
+      height: 393.h, // Make height responsive
+      padding: EdgeInsets.all(16.w), // Make padding responsive
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r), // Make border radius responsive
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
-            blurRadius: 8,
+            blurRadius: 8.r, // Make blur radius responsive
             offset: const Offset(0, 4),
           ),
         ],
@@ -29,12 +30,12 @@ class _GuestFlowAnalysisState extends State<GuestFlowAnalysis> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+              Text(
                 'Guest Flow Analysis',
                 style: TextStyle(
-                  fontSize: 21,
+                  fontSize: 21.sp, // Make font size responsive
                   fontWeight: FontWeight.w600,
-                  color: Color(0xff3e3e3e),
+                  color: const Color(0xff3e3e3e),
                 ),
               ),
               GestureDetector(
@@ -42,42 +43,42 @@ class _GuestFlowAnalysisState extends State<GuestFlowAnalysis> {
                   // Handle View All action
                 },
                 child: Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     border: Border(
-                        bottom: BorderSide(color: Color(0xffaaaaaa), width: 1)),
+                        bottom: BorderSide(color: const Color(0xffaaaaaa), width: 1.w)), // Responsive border width
                   ),
-                  child: const Text(
+                  child: Text(
                     'More',
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 10.sp, // Make font size responsive
                       fontWeight: FontWeight.w700,
-                      color: Color(0xffaaaaaa),
+                      color: const Color(0xffaaaaaa),
                     ),
                   ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h), // Make spacing responsive
           Expanded(
             child: LineChart(
               LineChartData(
                 gridData: FlGridData(show: true),
                 borderData: FlBorderData(
                   show: true,
-                  border: Border.all(color: const Color(0xffaaaaaa), width: 1),
+                  border: Border.all(color: const Color(0xffaaaaaa), width: 1.w), // Responsive border width
                 ),
                 titlesData: FlTitlesData(
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 30,
+                      reservedSize: 30.w, // Make reserved size responsive
                       getTitlesWidget: (value, meta) {
                         return Text(
                           value.toInt().toString(),
-                          style: const TextStyle(
-                            color: Color(0xffaaaaaa),
-                            fontSize: 10,
+                          style: TextStyle(
+                            color: const Color(0xffaaaaaa),
+                            fontSize: 10.sp, // Make font size responsive
                           ),
                         );
                       },
@@ -89,29 +90,17 @@ class _GuestFlowAnalysisState extends State<GuestFlowAnalysis> {
                       getTitlesWidget: (value, meta) {
                         switch (value.toInt()) {
                           case 0:
-                            return const Text('10:00',
-                                style: TextStyle(
-                                    color: Color(0xffaaaaaa), fontSize: 10));
+                            return Text('10:00', style: TextStyle(color: const Color(0xffaaaaaa), fontSize: 10.sp));
                           case 1:
-                            return const Text('11:00',
-                                style: TextStyle(
-                                    color: Color(0xffaaaaaa), fontSize: 10));
+                            return Text('11:00', style: TextStyle(color: const Color(0xffaaaaaa), fontSize: 10.sp));
                           case 2:
-                            return const Text('12:00',
-                                style: TextStyle(
-                                    color: Color(0xffaaaaaa), fontSize: 10));
+                            return Text('12:00', style: TextStyle(color: const Color(0xffaaaaaa), fontSize: 10.sp));
                           case 3:
-                            return const Text('1:00',
-                                style: TextStyle(
-                                    color: Color(0xffaaaaaa), fontSize: 10));
+                            return Text('1:00', style: TextStyle(color: const Color(0xffaaaaaa), fontSize: 10.sp));
                           case 4:
-                            return const Text('3:00',
-                                style: TextStyle(
-                                    color: Color(0xffaaaaaa), fontSize: 10));
+                            return Text('3:00', style: TextStyle(color: const Color(0xffaaaaaa), fontSize: 10.sp));
                           case 5:
-                            return const Text('5:00',
-                                style: TextStyle(
-                                    color: Color(0xffaaaaaa), fontSize: 10));
+                            return Text('5:00', style: TextStyle(color: const Color(0xffaaaaaa), fontSize: 10.sp));
                           default:
                             return const Text('');
                         }
@@ -137,7 +126,7 @@ class _GuestFlowAnalysisState extends State<GuestFlowAnalysis> {
                     ],
                     isCurved: true,
                     color: const Color(0xFF7086FD), // Line color
-                    barWidth: 4,
+                    barWidth: 4.w, // Responsive bar width
                     isStrokeCapRound: true,
                     belowBarData: BarAreaData(
                       show: true,
@@ -145,7 +134,6 @@ class _GuestFlowAnalysisState extends State<GuestFlowAnalysis> {
                     ),
                     dotData: FlDotData(
                       show: true, // Show dots
-
                     ),
                     gradient: LinearGradient(
                       colors: [
@@ -160,21 +148,6 @@ class _GuestFlowAnalysisState extends State<GuestFlowAnalysis> {
               ),
             ),
           ),
-          // Numbers on Points
-          // Padding(
-          //   padding: const EdgeInsets.only(top: 8.0),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     children: [
-          //       _buildPointNumber(0, 36),
-          //       _buildPointNumber(1, 55),
-          //       _buildPointNumber(2, 70),
-          //       _buildPointNumber(3, 45),
-          //       _buildPointNumber(4, 82),
-          //       _buildPointNumber(5, 60),
-          //     ],
-          //   ),
-          // ),
         ],
       ),
     );
@@ -183,23 +156,23 @@ class _GuestFlowAnalysisState extends State<GuestFlowAnalysis> {
   // Widget to display number at each point
   Widget _buildPointNumber(int x, double y) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 6),
+      padding: EdgeInsets.symmetric(horizontal: 6.w), // Responsive horizontal padding
       child: Column(
         children: [
           Text(
             y.toStringAsFixed(0), // Display the value with no decimal
-            style: const TextStyle(
-              fontSize: 14,
+            style: TextStyle(
+              fontSize: 14.sp, // Responsive font size
               fontWeight: FontWeight.w600,
-              color: Color(0xff3e3e3e),
+              color: const Color(0xff3e3e3e),
             ),
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4.h), // Responsive vertical spacing
           Text(
             _getTimeLabel(x), // Get time label based on X axis value
-            style: const TextStyle(
-              fontSize: 10,
-              color: Color(0xffaaaaaa),
+            style: TextStyle(
+              fontSize: 10.sp, // Responsive font size
+              color: const Color(0xffaaaaaa),
             ),
           ),
         ],

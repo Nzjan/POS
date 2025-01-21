@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:intl/intl.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HeaderBar extends StatelessWidget {
   final String title;
@@ -20,8 +20,8 @@ class HeaderBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 72),
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      margin: EdgeInsets.only(left: 72.w), // Responsive margin
+      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h), // Responsive padding
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -30,13 +30,13 @@ class HeaderBar extends StatelessWidget {
               GestureDetector(
                 onTap: onMenuTap,
                 child: Container(
-                  height: 37,
-                  width: 36,
-                  padding: const EdgeInsets.all(8),
+                  height: 37.h, // Responsive height
+                  width: 36.w, // Responsive width
+                  padding: EdgeInsets.all(8.w), // Responsive padding
                   decoration: BoxDecoration(
                     color: const Color(0xffffffff),
-                    borderRadius: BorderRadius.circular(9),
-                    border: Border.all(width: 0.6, color: const Color(0xffadadad)),
+                    borderRadius: BorderRadius.circular(9.r), // Responsive border radius
+                    border: Border.all(width: 0.6.w, color: const Color(0xffadadad)),
                     boxShadow: [
                       BoxShadow(
                         color: const Color(0xff5c5c5c).withOpacity(0.5),
@@ -48,36 +48,35 @@ class HeaderBar extends StatelessWidget {
                   child: const Icon(Iconsax.menu_1, color: Color(0xff3e3e3e)),
                 ),
               ),
-              const SizedBox(width: 24),
+              SizedBox(width: 24.w), // Responsive spacing
               Expanded(
                 child: Container(
-                  height: 46,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
+                  height: 46.h, // Responsive height
+                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h), // Responsive padding
                   decoration: BoxDecoration(
                     color: const Color(0xffffffff),
-                    borderRadius: BorderRadius.circular(21),
-                    border: Border.all(width: 0.6, color: const Color(0xffadadad)),
-
+                    borderRadius: BorderRadius.circular(21.r), // Responsive border radius
+                    border: Border.all(width: 0.6.w, color: const Color(0xffadadad)),
                   ),
                   child: Row(
                     children: [
-                      const Icon(
+                       Icon(
                         FluentIcons.search_art64,
                         color: Color(0xff3e3e3e),
-                        size: 18,
+                        size: 18.sp,
                       ),
-                      const SizedBox(width: 8.0),
+                      SizedBox(width: 8.w),
                       Expanded(
                         child: TextBox(
-                          padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.3),
+                          padding: EdgeInsets.symmetric(horizontal: 0.0.w, vertical: 0.3.h),
                           placeholder: 'Let\'s cook food',
-                          placeholderStyle: const TextStyle(
-                            fontSize: 12.0,
-                            color: Color(0xff3e3e3e),
+                          placeholderStyle: TextStyle(
+                            fontSize: 12.sp, // Responsive font size
+                            color: const Color(0xff3e3e3e),
                             fontWeight: FontWeight.bold,
                           ),
-                          style: const TextStyle(
-                            fontSize: 12.0,
+                          style: TextStyle(
+                            fontSize: 12.sp,
                             color: Colors.black,
                           ),
                           decoration: BoxDecoration(
@@ -99,29 +98,29 @@ class HeaderBar extends StatelessWidget {
                 children: [
                   Text(
                     _formatDate(DateTime.now()),
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.black,
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Text(
                     _formatTime(DateTime.now()),
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       color: Colors.black,
                     ),
                   ),
                 ],
               )
-
             ],
           ),
         ],
       ),
     );
   }
+
   String _formatDate(DateTime dateTime) {
     return DateFormat('MMM d').format(dateTime);
   }

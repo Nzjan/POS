@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import ScreenUtil
 import 'package:fluent_ui/fluent_ui.dart';
 
 class SummaryData extends StatefulWidget {
@@ -21,7 +22,7 @@ class _SummaryDataState extends State<SummaryData> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         _summaryContainer(
           value: totalOrders,
@@ -59,12 +60,11 @@ class _SummaryDataState extends State<SummaryData> {
     required String imageUrl,
     required Color iconBoxColor,
   }) {
-    // Convert percentvalue to double
+
     double percent = double.tryParse(percentvalue) ?? 0;
 
-    // Determine color based on percent value
     Color percentColor =
-        percent >= 0 ? const Color(0xff00b40c) : const Color(0xffdd00000);
+    percent >= 0 ? const Color(0xff00b40c) : const Color(0xffdd00000);
     String percentText =
         '${percent >= 0 ? '+' : ''}${percent.toStringAsFixed(1)}%';
 
@@ -72,17 +72,17 @@ class _SummaryDataState extends State<SummaryData> {
       children: [
         // The main container that holds text and other content
         Container(
-          height: 97,
-          width: 214,
+          height: 97.h, // Using ScreenUtil for responsive height
+          width: 214.w, // Using ScreenUtil for responsive width
           padding:
-              const EdgeInsets.only(top: 12, left: 12, right: 12, bottom: 8),
+          EdgeInsets.only(top: 12.h, left: 12.w, right: 12.w, bottom: 8.h), // Using ScreenUtil for responsive padding
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(8.r), // Responsive border radius
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.2),
-                blurRadius: 2,
+                blurRadius: 2.r,
                 offset: const Offset(0, 0),
               ),
             ],
@@ -92,24 +92,24 @@ class _SummaryDataState extends State<SummaryData> {
             children: [
               Text(
                 value,
-                style: const TextStyle(
-                  color: Color(0xff333333),
-                  fontSize: 24,
+                style: TextStyle(
+                  color: const Color(0xff333333),
+                  fontSize: 24.sp, // Responsive font size
                   fontFamily: 'Lato',
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              const SizedBox(height: 15),
+              SizedBox(height: 15.h), // Responsive height for spacing
               Text(
                 title,
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontFamily: 'Lato',
-                  fontSize: 12,
-                  color: Color(0xff818181),
+                  fontSize: 12.sp, // Responsive font size
+                  color: const Color(0xff818181),
                 ),
               ),
-              const SizedBox(height: 5),
+              SizedBox(height: 5.h), // Responsive height for spacing
               Row(
                 children: [
                   Text(
@@ -117,17 +117,17 @@ class _SummaryDataState extends State<SummaryData> {
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontFamily: 'Lato',
-                      fontSize: 8,
+                      fontSize: 8.sp, // Responsive font size
                       color: percentColor,
                     ),
                   ),
                   Text(
                     subtitle,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.w400,
                       fontFamily: 'Lato',
-                      fontSize: 8,
-                      color: Color(0xff969696),
+                      fontSize: 8.sp, // Responsive font size
+                      color: const Color(0xff969696),
                     ),
                   ),
                 ],
@@ -137,21 +137,21 @@ class _SummaryDataState extends State<SummaryData> {
         ),
         // Positioned small container with image
         Positioned(
-          top: 8,
-          right: 8,
+          top: 8.h, // Responsive top position
+          right: 8.w, // Responsive right position
           child: Container(
-            width: 32,
-            height: 32,
+            width: 32.w, // Responsive width
+            height: 32.h, // Responsive height
             decoration: BoxDecoration(
               color: iconBoxColor,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(16.r), // Responsive border radius
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(16.r), // Responsive border radius
               child: Image.asset(
                 imageUrl,
-                width: 16,
-                height: 16,
+                width: 16.w, // Responsive width for the image
+                height: 16.h, // Responsive height for the image
                 fit: BoxFit.none,
               ),
             ),

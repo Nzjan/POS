@@ -2,6 +2,7 @@ import 'package:RMS/home_layout.dart';
 import 'package:RMS/login_screen.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import this package
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -12,9 +13,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const FluentApp(
-      debugShowCheckedModeBanner: false,
-      home: EntryPage(),
+    return ScreenUtilInit(
+      designSize: const Size(1280, 832),
+      minTextAdapt: true,
+      builder: (context, child) {
+        return const FluentApp(
+          debugShowCheckedModeBanner: false,
+          home: EntryPage(),
+        );
+      },
     );
   }
 }
@@ -35,7 +42,7 @@ class _EntryPageState extends State<EntryPage> {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          FluentPageRoute(builder: (context) =>  LoginScreen()),
+          FluentPageRoute(builder: (context) =>  HomeLayout()),
         );
       }
     });
@@ -45,14 +52,14 @@ class _EntryPageState extends State<EntryPage> {
   Widget build(BuildContext context) {
     return ScaffoldPage(
       content: Container(
-        height: 832,
-        width: 1219,
+        height: 832.h,
+        width: 1219.w,
         color: const Color(0xff161a23),
         child: Center(
           child: Image.asset(
             'assets/front_logo.png',
-            width: 175,
-            height: 260,
+            width: 175.w,
+            height: 260.h,
           ),
         ),
       ),

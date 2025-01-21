@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio/dio.dart';
 import 'package:RMS/home_layout.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 final loginStateProvider = StateNotifierProvider<LoginStateNotifier, LoginState>((ref) {
@@ -143,12 +144,12 @@ class _LoginFormState extends ConsumerState<LoginForm> {
             clipBehavior: Clip.none,
             children: [
               Container(
-                height: 41,
-                width: 316,
-                padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10), // Adjusted padding here
+                height: 41.h,
+                width: 316.w,
+                padding:  EdgeInsets.symmetric(horizontal: 18.w, vertical: 10.h), // Adjusted padding here
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  border: Border.all(color: const Color(0xFF969696), width: 0.6),
+                  borderRadius: BorderRadius.circular(6.r),
+                  border: Border.all(color: const Color(0xFF969696), width: 0.6.w),
                 ),
                 child: TextFormField(
                   controller: emailController,
@@ -164,15 +165,15 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                 ),
               ),
               Positioned(
-                top: -12,
-                left: 16,
+                top: -12.h,
+                left: 16.w,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding:  EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
                   color: Colors.white,
-                  child: const Text(
+                  child:  Text(
                     "User Name / Employee Id",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w500,
                       color: Color(0xFF818181),
                     ),
@@ -181,19 +182,19 @@ class _LoginFormState extends ConsumerState<LoginForm> {
               ),
             ],
           ),
-          const SizedBox(height: 32),
+           SizedBox(height: 32.h),
 
 
           Stack(
             clipBehavior: Clip.none,
             children: [
               Container(
-                height: 41,
-                width: 316,
-                padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10), // Adjust padding here
+                height: 41.h,
+                width: 316.w,
+                padding:  EdgeInsets.symmetric(horizontal: 18.w, vertical: 10.h), // Adjust padding here
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  border: Border.all(color: const Color(0xFF969696), width: 0.6),
+                  borderRadius: BorderRadius.circular(6.r),
+                  border: Border.all(color: const Color(0xFF969696), width: 0.6.w),
                 ),
                 child: Align(
                   alignment: Alignment.center, // Center the TextFormField vertically
@@ -212,8 +213,8 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                 ),
               ),
               Positioned(
-                top: 2,
-                right: 12,
+                top: 2.h,
+                right: 12.w,
                 child: IconButton(
                   icon: Icon(
                     _obscurePassword ? Icons.visibility_off : Icons.visibility,
@@ -227,15 +228,15 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                 ),
               ),
               Positioned(
-                top: -12,
-                left: 16,
+                top: -12.h,
+                left: 16.w,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding:  EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
                   color: Colors.white,
-                  child: const Text(
+                  child:  Text(
                     "Password / Pin",
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w500,
                       color: Color(0xFF818181),
                     ),
@@ -245,11 +246,11 @@ class _LoginFormState extends ConsumerState<LoginForm> {
             ],
           ),
 
-          const SizedBox(height: 45),
+           SizedBox(height: 45.h),
           Center(
             child: SizedBox(
-              height: 41,
-              width: 196,
+              height: 41.h,
+              width: 196.w,
               child: MouseRegion(
                 onEnter: _onEnter1,
                 onExit: _onExit1,
@@ -257,16 +258,16 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all(_buttonColor1),
                     foregroundColor: WidgetStateProperty.all(const Color(0xff292929)),
-                    padding: WidgetStateProperty.all(const EdgeInsets.symmetric(vertical: 12, horizontal: 10)),
+                    padding: WidgetStateProperty.all( EdgeInsets.symmetric(vertical: 12.h, horizontal: 10.w)),
                     shape: WidgetStateProperty.all(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
-                      side: const BorderSide(
+                      side:  BorderSide(
                         color: Color(0xFF292929),
-                        width: 1,
+                        width: 1.w,
                       ),
                     )),
-                    textStyle: WidgetStateProperty.all(const TextStyle(
-                      fontSize: 14,
+                    textStyle: WidgetStateProperty.all( TextStyle(
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w700,
                     )),
                   ),
@@ -283,10 +284,10 @@ class _LoginFormState extends ConsumerState<LoginForm> {
             ),
           ),
           if (loginState.errorMessage.isNotEmpty) ...[
-            const SizedBox(height: 20),
+             SizedBox(height: 20.h),
             Text(
               loginState.errorMessage,
-              style: const TextStyle(color: Colors.red, fontSize: 16),
+              style:  TextStyle(color: Colors.red, fontSize: 16.sp),
             ),
           ],
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TableSelectBar extends StatefulWidget {
   final String selectedTable; // Required parameter
@@ -20,11 +21,11 @@ class _TableSelectBarState extends State<TableSelectBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-      decoration: const BoxDecoration(
-        color: Color(0xfffafafa),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
+      decoration:  BoxDecoration(
+        color: const Color(0xfffafafa),
         border: Border(
-          left: BorderSide(color: Color(0xFFC2C2C2), width: 1),
+          left: BorderSide(color: const Color(0xFFC2C2C2), width: 1.w),
         ),
       ),
       child: Column(
@@ -32,11 +33,11 @@ class _TableSelectBarState extends State<TableSelectBar> {
         children: [
           // Header section
           Container(
-            decoration: const BoxDecoration(
+            decoration:  BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  color: Color(0xffc2c2c2),
-                  width: 1.0,
+                  color: const Color(0xffc2c2c2),
+                  width: 1.w,
                 ),
               ),
             ),
@@ -51,40 +52,40 @@ class _TableSelectBarState extends State<TableSelectBar> {
                     Row(
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 1),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 8.w, vertical: 1.h),
                           decoration: BoxDecoration(
                             color: _getStatusColor(widget.selectedTable),
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4), // Top-left corner radius
-                              bottomLeft: Radius.circular(4), // Bottom-left corner radius
+                            borderRadius:  BorderRadius.only(
+                              topLeft: Radius.circular(4.r), // Top-left corner radius
+                              bottomLeft: Radius.circular(4.r), // Bottom-left corner radius
                             ),
                           ),
                           child: Text(
                             widget.selectedTable, // Use selectedTable here
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
                         ),
-                        const SizedBox(width: 2),
+                        SizedBox(width: 2.w),
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 1),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 8.w, vertical: 1.h),
                           decoration: BoxDecoration(
                             color: _getStatusColor(widget.selectedTable),
-                            borderRadius: const BorderRadius.only(
-                              topRight: Radius.circular(4),   // Top-right corner radius
-                              bottomRight: Radius.circular(4), // Bottom-right corner radius
+                            borderRadius:  BorderRadius.only(
+                              topRight: Radius.circular(4.r),   // Top-right corner radius
+                              bottomRight: Radius.circular(4.r), // Bottom-right corner radius
                             ),
                           ),
                           child: Text(
                             "${widget.tableCounts[widget.selectedTable.toLowerCase()] ?? 0}", // Dynamic count
-                            style: const TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -98,18 +99,18 @@ class _TableSelectBarState extends State<TableSelectBar> {
                         // Formatted Date
                         Text(
                           _formatDate(DateTime.now()),
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.black,
-                            fontSize: 16,
+                            fontSize: 16.sp,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         // Formatted Time
                         Text(
                           _formatTime(DateTime.now()),
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             color: Colors.black,
                           ),
                         ),
@@ -117,7 +118,7 @@ class _TableSelectBarState extends State<TableSelectBar> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 // Floor and chair information row
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,19 +128,19 @@ class _TableSelectBarState extends State<TableSelectBar> {
                       children: [
                         Text(
                           widget.selectedFloor, // Use selectedFloor
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.black,
-                            fontSize: 26,
+                            fontSize: 26.sp,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        SizedBox(height: 4.h),
                         // Show "Floor" only if selectedTable is "All"
                         if (widget.selectedTable == "All")
-                          const Text(
+                          Text(
                             "Floor",
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               color: Colors.black54,
                             ),
                           ),
@@ -147,11 +148,11 @@ class _TableSelectBarState extends State<TableSelectBar> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 12),
+                SizedBox(height: 12.h),
               ],
             ),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
         ],
       ),
     );

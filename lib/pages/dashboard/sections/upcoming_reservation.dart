@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import ScreenUtil
 import 'package:fluent_ui/fluent_ui.dart';
 
 class UpcomingReservations extends StatefulWidget {
@@ -6,20 +7,18 @@ class UpcomingReservations extends StatefulWidget {
 }
 
 class _UpcomingReservationsState extends State<UpcomingReservations> {
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 393,
-      padding: const EdgeInsets.all(16),
+      height: 393.h, // Using ScreenUtil for height
+      padding: EdgeInsets.all(16.w), // Using ScreenUtil for padding
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r), // Using ScreenUtil for border radius
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
-            blurRadius: 8,
+            blurRadius: 8.r, // Responsive blur radius
             offset: const Offset(0, 4),
           ),
         ],
@@ -30,37 +29,35 @@ class _UpcomingReservationsState extends State<UpcomingReservations> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+              Text(
                 'Upcoming Reservations',
                 style: TextStyle(
-                  fontSize: 21,
+                  fontSize: 21.sp, // Responsive font size
                   fontWeight: FontWeight.w600,
-                  color: Color(0xff3e3e3e),
+                  color: const Color(0xff3e3e3e),
                 ),
               ),
               GestureDetector(
-                onTap: () {
-
-                },
+                onTap: () {},
                 child: Container(
                   decoration: const BoxDecoration(
-                    border: Border(bottom: BorderSide(color: Color(0xffaaaaaa), width: 1)), // Border only at the bottom
+                    border: Border(bottom: BorderSide(color: Color(0xffaaaaaa), width: 1)),
                   ),
-                  child: const Text(
+                  child: Text(
                     'View All',
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 10.sp, // Responsive font size
                       fontWeight: FontWeight.w700,
-                      color: Color(0xffaaaaaa),
+                      color: const Color(0xffaaaaaa),
                     ),
                   ),
                 ),
               )
             ],
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h), // Responsive height for spacing
           // Title Row with Dividers
-          const Padding(
+           Padding(
             padding: EdgeInsets.only(bottom: 8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,7 +67,7 @@ class _UpcomingReservationsState extends State<UpcomingReservations> {
                   child: Text(
                     'Reservation No.',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 12.sp, // Responsive font size
                       fontWeight: FontWeight.w600,
                       color: Color(0xffaaaaaa),
                     ),
@@ -81,7 +78,7 @@ class _UpcomingReservationsState extends State<UpcomingReservations> {
                   child: Text(
                     'Guest Name',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 12.sp, // Responsive font size
                       fontWeight: FontWeight.w600,
                       color: Color(0xffaaaaaa),
                     ),
@@ -92,7 +89,7 @@ class _UpcomingReservationsState extends State<UpcomingReservations> {
                   child: Text(
                     'Guest No.',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 12.sp, // Responsive font size
                       fontWeight: FontWeight.w600,
                       color: Color(0xffaaaaaa),
                     ),
@@ -104,7 +101,7 @@ class _UpcomingReservationsState extends State<UpcomingReservations> {
                   child: Text(
                     'Time',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 12.sp, // Responsive font size
                       fontWeight: FontWeight.w600,
                       color: Color(0xffaaaaaa),
                     ),
@@ -116,7 +113,7 @@ class _UpcomingReservationsState extends State<UpcomingReservations> {
                   child: Text(
                     'Duration',
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 12.sp, // Responsive font size
                       fontWeight: FontWeight.w600,
                       color: Color(0xffaaaaaa),
                     ),
@@ -129,10 +126,11 @@ class _UpcomingReservationsState extends State<UpcomingReservations> {
           const Divider(),
           // Data Rows
           Expanded(
-            child: ListView(
-              children: List.generate(7, (index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8),
+            child: ListView.builder(
+              itemCount: 7, // Adjust number of items as per requirement
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.h), // Responsive vertical spacing
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -141,9 +139,9 @@ class _UpcomingReservationsState extends State<UpcomingReservations> {
                         child: Text(
                           'R-1004',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 14.sp, // Responsive font size
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff3e3e3e),
+                            color: const Color(0xff3e3e3e),
                           ),
                         ),
                       ),
@@ -152,9 +150,9 @@ class _UpcomingReservationsState extends State<UpcomingReservations> {
                         child: Text(
                           'Jin Woo',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 14.sp, // Responsive font size
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff3e3e3e),
+                            color: const Color(0xff3e3e3e),
                           ),
                         ),
                       ),
@@ -163,9 +161,9 @@ class _UpcomingReservationsState extends State<UpcomingReservations> {
                         child: Text(
                           '2',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 14.sp, // Responsive font size
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff3e3e3e),
+                            color: const Color(0xff3e3e3e),
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -175,19 +173,19 @@ class _UpcomingReservationsState extends State<UpcomingReservations> {
                         child: Text(
                           '1:00 pm - 2:00 pm',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 14.sp, // Responsive font size
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff3e3e3e),
+                            color: const Color(0xff3e3e3e),
                           ),
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      const Expanded(
+                       Expanded(
                         flex: 2,
                         child: Text(
                           '45:33',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 14.sp, // Responsive font size
                             fontWeight: FontWeight.w700,
                             color: Colors.black,
                           ),
@@ -197,7 +195,7 @@ class _UpcomingReservationsState extends State<UpcomingReservations> {
                     ],
                   ),
                 );
-              }),
+              },
             ),
           ),
         ],

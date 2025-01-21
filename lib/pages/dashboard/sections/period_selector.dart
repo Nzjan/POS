@@ -1,4 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PeriodSelector extends StatefulWidget {
   @override
@@ -38,7 +39,14 @@ class _PeriodSelectorState extends State<PeriodSelector> {
           },
         ),
       ],
-      leading: Text(_selectedPeriod, style: const TextStyle(fontSize: 16)),
+      leading: Text(
+        _selectedPeriod, // Dynamically show the selected period
+        style: TextStyle(
+          fontSize: 16.sp, // Scaled font size based on screen size
+          fontWeight: FontWeight.w600,
+          color: _selectedPeriod == 'Today' ? Colors.blue : Colors.black, // Highlight the selected period
+        ),
+      ),
     );
   }
 }

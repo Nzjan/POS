@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import ScreenUtil
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -12,15 +13,15 @@ class _TotalSalesChartState extends State<TotalSalesChart> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
-      padding: const EdgeInsets.all(16),
+      height: 400.h, // Responsive height using ScreenUtil
+      padding: EdgeInsets.all(16.w), // Responsive padding using ScreenUtil
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r), // Responsive border radius
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
-            blurRadius: 8,
+            blurRadius: 8.r, // Responsive blur radius
             offset: const Offset(0, 4),
           ),
         ],
@@ -31,12 +32,12 @@ class _TotalSalesChartState extends State<TotalSalesChart> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+              Text(
                 'Total Sales',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 20.sp, // Responsive font size
                   fontWeight: FontWeight.w600,
-                  color: Color(0xff3e3e3e),
+                  color: const Color(0xff3e3e3e),
                 ),
               ),
               DropDownButton(
@@ -56,46 +57,45 @@ class _TotalSalesChartState extends State<TotalSalesChart> {
                 ],
                 leading: const Text('Today'),
               ),
-
             ],
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h), // Responsive height using ScreenUtil
           Expanded(
             child: LineChart(
               LineChartData(
                 gridData: FlGridData(
                   show: true,
                   drawVerticalLine: true,
-                  horizontalInterval: 20,
-                  verticalInterval: 1,
+                  horizontalInterval: 20.w,
+                  verticalInterval: 1.h,
                   getDrawingHorizontalLine: (value) {
-                    return const FlLine(
-                      color: Color(0xffe0e0e0),
-                      strokeWidth: 1,
+                    return FlLine(
+                      color: const Color(0xffe0e0e0),
+                      strokeWidth: 1.w, // Responsive stroke width
                     );
                   },
                   getDrawingVerticalLine: (value) {
-                    return const FlLine(
-                      color: Color(0xffe0e0e0),
-                      strokeWidth: 1,
+                    return FlLine(
+                      color: const Color(0xffe0e0e0),
+                      strokeWidth: 1.w, // Responsive stroke width
                     );
                   },
                 ),
                 borderData: FlBorderData(
                   show: true,
-                  border: Border.all(color: const Color(0xffe0e0e0), width: 1),
+                  border: Border.all(color: const Color(0xffe0e0e0), width: 1.w), // Responsive border width
                 ),
                 titlesData: FlTitlesData(
                   leftTitles: AxisTitles(
                     sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 40,
+                      reservedSize: 40.w, // Responsive reserved size
                       getTitlesWidget: (value, meta) {
                         return Text(
                           '${value.toInt()} k',
-                          style: const TextStyle(
-                            color: Color(0xffaaaaaa),
-                            fontSize: 10,
+                          style: TextStyle(
+                            color: const Color(0xffaaaaaa),
+                            fontSize: 10.sp, // Responsive font size
                           ),
                         );
                       },
@@ -109,9 +109,9 @@ class _TotalSalesChartState extends State<TotalSalesChart> {
                         if (value.toInt() >= 0 && value.toInt() < labels.length) {
                           return Text(
                             labels[value.toInt()],
-                            style: const TextStyle(
-                              color: Color(0xffaaaaaa),
-                              fontSize: 10,
+                            style: TextStyle(
+                              color: const Color(0xffaaaaaa),
+                              fontSize: 10.sp, // Responsive font size
                             ),
                           );
                         }
@@ -138,7 +138,7 @@ class _TotalSalesChartState extends State<TotalSalesChart> {
                     ],
                     isCurved: false,
                     color: const Color(0xFF7086FD),
-                    barWidth: 4,
+                    barWidth: 4.w, // Responsive bar width
                     isStrokeCapRound: true,
                     belowBarData: BarAreaData(
                       show: true,

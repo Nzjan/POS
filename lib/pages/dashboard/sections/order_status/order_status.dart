@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OrderStatus extends StatefulWidget {
   const OrderStatus({Key? key}) : super(key: key);
@@ -38,15 +39,15 @@ class _OrderStatusState extends State<OrderStatus> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 725,
-      padding: const EdgeInsets.all(16),
+      height: 725.h, // Responsive height
+      padding: EdgeInsets.all(16.w), // Responsive padding
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r), // Responsive border radius
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
-            blurRadius: 8,
+            blurRadius: 8.r,
             offset: const Offset(0, 0),
           ),
         ],
@@ -54,16 +55,16 @@ class _OrderStatusState extends State<OrderStatus> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Orders',
             style: TextStyle(
-              fontSize: 21,
+              fontSize: 21.sp, // Responsive font size
               fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
           _buildOrderTabBar(),
-          const SizedBox(height: 2),
+          SizedBox(height: 2.h),
           Expanded(
             child: isDineInSelected
                 ? _buildDineInOrderListView()
@@ -80,12 +81,12 @@ class _OrderStatusState extends State<OrderStatus> {
 
   Widget _buildOrderTabBar() {
     return Container(
-      width: 418,
+      width: double.infinity, // Make it responsive to screen width
       padding: EdgeInsets.zero,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: const Color(0xff969696), width: 0.8),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.r), // Responsive border radius
       ),
       child: Row(
         children: [
@@ -120,13 +121,13 @@ class _OrderStatusState extends State<OrderStatus> {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.w), // Responsive padding
           decoration: BoxDecoration(
             color: isSelected ? const Color(0xffEADBF9) : Colors.white,
             borderRadius: title == 'Dine-in'
-                ? const BorderRadius.only(topLeft: Radius.circular(8), bottomLeft: Radius.circular(8))
+                ? BorderRadius.only(topLeft: Radius.circular(8.r), bottomLeft: Radius.circular(8.r))
                 : title == 'Delivery'
-                ? const BorderRadius.only(topRight: Radius.circular(8), bottomRight: Radius.circular(8))
+                ? BorderRadius.only(topRight: Radius.circular(8.r), bottomRight: Radius.circular(8.r))
                 : null,
             border: title == 'Take Away'
                 ? const Border(
@@ -139,7 +140,7 @@ class _OrderStatusState extends State<OrderStatus> {
             child: Text(
               title,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 12.sp, // Responsive font size
                 fontFamily: 'Lato',
                 fontWeight: FontWeight.w500,
                 color: isSelected ? Colors.black : const Color(0xff6a6a6a),
@@ -189,26 +190,29 @@ class _DineInOrderContent extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(12),
+          padding: EdgeInsets.all(12.w), // Responsive padding
           child: Row(
             children: [
               Container(
-                width: 48,
-                height: 40,
+                width: 48.w, // Responsive width
+                height: 40.h, // Responsive height
                 decoration: BoxDecoration(
                   color: const Color(0xffffc7c7),
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(6.r), // Responsive border radius
                   border: Border.all(color: const Color(0xffED4B46)),
                 ),
                 child: Center(
                   child: Text(
                     order.table!,
                     style: const TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w700, fontFamily: 'Lato'),
+                      color: Colors.black,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Lato',
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(width: 12),
+              SizedBox(width: 12.w), // Responsive spacing
               Expanded(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -219,12 +223,12 @@ class _DineInOrderContent extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            const Text("#", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
-                            Text(order.orderId, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+                            Text("#", style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600)),
+                            Text(order.orderId, style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600)),
                           ],
                         ),
-                        const SizedBox(height: 4,),
-                        Text(order.waiterName, style: const TextStyle(fontSize: 12)),
+                        SizedBox(height: 4.h),
+                        Text(order.waiterName, style: TextStyle(fontSize: 12.sp)),
                       ],
                     ),
                     Column(
@@ -233,27 +237,18 @@ class _DineInOrderContent extends StatelessWidget {
                         Row(
                           children: [
                             Text('${order.completedItems}/${order.totalItems}',
-                                style: const TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: 'Lato',
-                                    fontWeight: FontWeight.w700
-                                )
-                            ),
-                            const Text(' items',
                                 style: TextStyle(
-                                    color: Color(0xff969696),
-                                    fontSize: 12,
+                                    fontSize: 12.sp,
                                     fontFamily: 'Lato',
-                                    fontWeight: FontWeight.w700
-                                )
-                            ),
+                                    fontWeight: FontWeight.w700)),
+                            Text(' items', style: TextStyle(color: const Color(0xff969696), fontSize: 12.sp)),
                           ],
                         ),
                         if (order.completedItems == order.totalItems)
-                          const Row(
+                          Row(
                             children: [
-                              Icon(FontAwesomeIcons.solidCircleCheck, color: Color(0xff00d03e), size: 14),
-                              Text(' Served', style: TextStyle(color: Color(0xff6a6a6a), fontSize: 10)),
+                              Icon(FontAwesomeIcons.solidCircleCheck, color: const Color(0xff00d03e), size: 14.sp),
+                              Text(' Served', style: TextStyle(color: const Color(0xff6a6a6a), fontSize: 10.sp)),
                             ],
                           ),
                       ],
@@ -284,15 +279,15 @@ class _TakeAwayOrderContent extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(12),
+          padding: EdgeInsets.all(12.w), // Responsive padding
           child: Row(
             children: [
               Container(
-                width: 65,
-                height: 40,
+                width: 65.w, // Responsive width
+                height: 40.h, // Responsive height
                 decoration: BoxDecoration(
                   color: const Color(0xffffc7c7),
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(6.r), // Responsive border radius
                   border: Border.all(color: const Color(0xffED4B46)),
                 ),
                 child: Center(
@@ -302,7 +297,7 @@ class _TakeAwayOrderContent extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 12),
+              SizedBox(width: 12.w), // Responsive spacing
               Expanded(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -311,14 +306,14 @@ class _TakeAwayOrderContent extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(order.customerName, style: const TextStyle(fontSize: 12)),
-                        const SizedBox(height: 4,),
+                        Text(order.customerName, style: TextStyle(fontSize: 12.sp)),
+                        SizedBox(height: 4.h),
                         Row(
                           children: [
-                            Icon(statusIcon, color: statusIconColor, size: 14),
+                            Icon(statusIcon, color: statusIconColor, size: 14.sp),
                             Text(
                               statusText,
-                              style: const TextStyle(color: Color(0xff6a6a6a), fontSize: 10),
+                              style: TextStyle(color: const Color(0xff6a6a6a), fontSize: 10.sp),
                             ),
                           ],
                         ),
@@ -327,22 +322,18 @@ class _TakeAwayOrderContent extends StatelessWidget {
                     Row(
                       children: [
                         Text('${order.completedItems}/${order.totalItems}',
-                            style: const TextStyle(
-                                fontSize: 12,
-                                fontFamily: 'Lato',
-                                fontWeight: FontWeight.w700
-                            )
-                        ),
-                        const Text(' items',
                             style: TextStyle(
-                                color: Color(0xff969696),
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 fontFamily: 'Lato',
-                                fontWeight: FontWeight.w700
-                            )
-                        ),
+                                fontWeight: FontWeight.w700)),
+                        Text(' items',
+                            style: TextStyle(
+                                color: const Color(0xff969696),
+                                fontSize: 12.sp,
+                                fontFamily: 'Lato',
+                                fontWeight: FontWeight.w700)),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -369,15 +360,15 @@ class _DeliveryOrderContent extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(12),
+          padding: EdgeInsets.all(12.w), // Responsive padding
           child: Row(
             children: [
               Container(
-                width: 65,
-                height: 40,
+                width: 65.w, // Responsive width
+                height: 40.h, // Responsive height
                 decoration: BoxDecoration(
                   color: const Color(0xffffc7c7),
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(6.r), // Responsive border radius
                   border: Border.all(color: const Color(0xffED4B46)),
                 ),
                 child: Center(
@@ -387,7 +378,7 @@ class _DeliveryOrderContent extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 12),
+              SizedBox(width: 12.w), // Responsive spacing
               Expanded(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -396,14 +387,14 @@ class _DeliveryOrderContent extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(order.deliveryGuyName, style: const TextStyle(fontSize: 12)),
-                        const SizedBox(height: 4,),
+                        Text(order.deliveryGuyName, style: TextStyle(fontSize: 12.sp)),
+                        SizedBox(height: 4.h),
                         Row(
                           children: [
-                            Icon(statusIcon, color: statusIconColor, size: 14),
+                            Icon(statusIcon, color: statusIconColor, size: 14.sp),
                             Text(
                               statusText,
-                              style: const TextStyle(color: Color(0xff6a6a6a), fontSize: 10),
+                              style: TextStyle(color: const Color(0xff6a6a6a), fontSize: 10.sp),
                             ),
                           ],
                         ),
@@ -412,23 +403,18 @@ class _DeliveryOrderContent extends StatelessWidget {
                     Row(
                       children: [
                         Text('${order.completedItems}/${order.totalItems}',
-                            style: const TextStyle(
-                                fontSize: 12,
-                                fontFamily: 'Lato',
-                                fontWeight: FontWeight.w700
-                            )
-                        ),
-                        const Text(' items',
                             style: TextStyle(
-                              color: Color(0xff969696),
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 fontFamily: 'Lato',
-                                fontWeight: FontWeight.w700
-                            )
-                        ),
+                                fontWeight: FontWeight.w700)),
+                        Text(' items',
+                            style: TextStyle(
+                                color: const Color(0xff969696),
+                                fontSize: 12.sp,
+                                fontFamily: 'Lato',
+                                fontWeight: FontWeight.w700)),
                       ],
-                    )
-
+                    ),
                   ],
                 ),
               ),

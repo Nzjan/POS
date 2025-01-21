@@ -176,7 +176,7 @@ class _DineInPageState extends State<DineInPage> {
                         ),
                         child: DataTable(
                           columns: [
-                            // Item Column with black background
+
                             DataColumn(
                               label: Container(
                                 padding: const EdgeInsets.all(8.0),

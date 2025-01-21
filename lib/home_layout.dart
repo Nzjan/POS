@@ -1,11 +1,11 @@
-import 'package:RMS/main.dart';
-import 'package:RMS/pages/header_bar.dart';
+import 'package:RMS/pages/dashboard/header_bar_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'login_screen.dart';
 import 'opening_cash_dialog.dart';
-// drawer items import
 import 'package:RMS/pages/dashboard/dashboard_page.dart';
 import 'package:RMS/pages/table/table_page.dart';
 import 'package:RMS/pages/menu/menu_page.dart';
@@ -25,37 +25,35 @@ class _HomeLayoutState extends State<HomeLayout> {
   int selectedPageIndex = 0;
   bool isSelectedHeader = false;
 
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(const Duration(seconds: 0), () {
+      if (mounted) {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) {
+            return const OpeningCashDialog();
+          },
+        );
+      }
+    });
+  }
   void toggleDrawer() {
     setState(() {
       isDrawerExpanded = !isDrawerExpanded;
     });
   }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //
-  //   Future.delayed(const Duration(seconds: 0), () {
-  //     if (mounted) {
-  //       showDialog(
-  //         context: context,
-  //         barrierDismissible: false,
-  //         builder: (context) {
-  //           return const OpeningCashDialog();
-  //         },
-  //       );
-  //     }
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-
       padding: EdgeInsets.zero,
       child: Stack(
         children: [
-
           GestureDetector(
             onTap: () {
               if (isDrawerExpanded) {
@@ -67,14 +65,12 @@ class _HomeLayoutState extends State<HomeLayout> {
                 Expanded(
                   child: Column(
                     children: [
-                      //Header Bar
+                      // Header Bar
                       HeaderBar(
                         title: _getPageTitle(selectedPageIndex),
                         onMenuTap: toggleDrawer,
                         selectedPageIndex: selectedPageIndex,
                       ),
-
-
                       Expanded(
                         child: _getPageContent(selectedPageIndex),
                       ),
@@ -84,17 +80,13 @@ class _HomeLayoutState extends State<HomeLayout> {
               ],
             ),
           ),
-
-
           AnimatedPositioned(
             duration: const Duration(milliseconds: 1),
             left: 0,
             top: 0,
-            width: isDrawerExpanded ? 221 : 72,
-            // Expanded or collapsed width.
+            width: isDrawerExpanded ? 221.w : 72.w,
             child: GestureDetector(
               onTap: () {
-
                 if (isSelectedHeader) {
                   setState(() {
                     isSelectedHeader = false;
@@ -104,16 +96,15 @@ class _HomeLayoutState extends State<HomeLayout> {
               child: Container(
                 decoration: BoxDecoration(
                   color: const Color(0xFF161A23),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(bottom: 10),
+                      margin: EdgeInsets.only(bottom: 10.h),
                       child: _buildLogoRow(),
                     ),
-                    // Drawer items
                     _buildDrawerItem(
                       icon: FontAwesomeIcons.house,
                       label: 'Dashboard',
@@ -144,12 +135,10 @@ class _HomeLayoutState extends State<HomeLayout> {
                       label: 'Register',
                       index: 5,
                     ),
-                    const SizedBox(height: 40,),
-
+                    SizedBox(height: 40.h),
                     _buildSidebarHeader("Notification"),
-                    // Bottom section: Theme toggle
                     Container(
-                      margin: const EdgeInsets.only(top: 10),
+                      margin: EdgeInsets.only(top: 10.h),
                       child: _buildBottomRow(),
                     ),
                   ],
@@ -157,7 +146,6 @@ class _HomeLayoutState extends State<HomeLayout> {
               ),
             ),
           ),
-
         ],
       ),
     );
@@ -180,12 +168,11 @@ class _HomeLayoutState extends State<HomeLayout> {
         children: [
           // Main menu container
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
             decoration: BoxDecoration(
               color: isSelectedMain ? const Color(0xFF2D2F39) : null,
-
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -194,26 +181,25 @@ class _HomeLayoutState extends State<HomeLayout> {
                   children: [
                     Icon(
                       icon,
-                      size: 24,
+                      size: 24.sp,
                       color: isSelectedMain
                           ? Colors.white
                           : const Color(0xFF8A8C91),
                     ),
                     if (isDrawerExpanded) ...[
-                      const SizedBox(width: 16),
+                      SizedBox(width: 16.w),
                       Text(
                         label,
                         style: TextStyle(
                           color: isSelectedMain
                               ? Colors.white
                               : const Color(0xFF8A8C91),
-                          fontSize: 14,
+                          fontSize: 14.sp,
                         ),
                       ),
                     ],
                   ],
                 ),
-
               ],
             ),
           ),
@@ -222,41 +208,37 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 
-
   Widget _buildSidebarHeader(String title) {
     return GestureDetector(
       onTap: () {
-
         setState(() {
           isSelectedHeader = !isSelectedHeader;
         });
       },
       child: Column(
         children: [
-
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
             decoration: BoxDecoration(
               color: isSelectedHeader ? const Color(0xFF2D2F39) : null,
-
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(6.r),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(
                   Iconsax.notification,
-                  size: 24,
+                  size: 24.sp,
                   color: isSelectedHeader ? Colors.white : const Color(0xFF8A8C91),
                 ),
                 if (isDrawerExpanded) ...[
-                  const SizedBox(width: 16),
+                  SizedBox(width: 16.w),
                   Text(
                     title,
                     style: TextStyle(
                       color: isSelectedHeader ? Colors.white : const Color(0xFF8A8C91),
-                      fontSize: 14,
+                      fontSize: 14.sp,
                     ),
                   ),
                 ],
@@ -267,19 +249,20 @@ class _HomeLayoutState extends State<HomeLayout> {
       ),
     );
   }
+
   Widget _buildLogoRow() {
     return Container(
-      height: 68,
+      height: 68.h,
       color: const Color(0xFF2D2F39),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 20),
+            padding: EdgeInsets.only(left: 20.w),
             child: GestureDetector(
               child: SizedBox(
-                width: 30,
-                height: 30,
+                width: 30.w,
+                height: 30.h,
                 child: Image.asset(
                   'assets/pos_logo.png',
                   fit: BoxFit.contain,
@@ -287,10 +270,9 @@ class _HomeLayoutState extends State<HomeLayout> {
               ),
             ),
           ),
-
           if (isDrawerExpanded) ...[
             Padding(
-              padding: const EdgeInsets.only(right: 17),
+              padding: EdgeInsets.only(right: 17.w),
               child: GestureDetector(
                 onTap: () {
                   Navigator.pushReplacement(
@@ -298,10 +280,10 @@ class _HomeLayoutState extends State<HomeLayout> {
                     MaterialPageRoute(builder: (context) =>  LoginScreen()),
                   );
                 },
-                child: const Icon(
+                child:  Icon(
                   Icons.exit_to_app,
                   color: Colors.white,
-                  size: 30,
+                  size: 30.sp,
                 ),
               ),
             ),
@@ -312,66 +294,63 @@ class _HomeLayoutState extends State<HomeLayout> {
   }
 
   Widget _buildBottomRow() {
-    return
-      Container(
-          height: 76,
-          padding: const EdgeInsets.only(top: 15, bottom: 16, left: 12,),
-          decoration: const BoxDecoration(
-            color: Color(0xFF161a23),
-            border: Border(
-              top: BorderSide(color: Color(0xFF2D2F39), width: 1),
+    return Container(
+      height: 76.h,
+      padding: EdgeInsets.only(top: 15.h, bottom: 16.h, left: 12.w),
+      decoration: const BoxDecoration(
+        color: Color(0xFF161a23),
+        border: Border(
+          top: BorderSide(color: Color(0xFF2D2F39), width: 1),
+        ),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: 45.w,
+            height: 45.h,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: const Color(0xFF2D2F39),
+                width: 0.78.w,
+              ),
+            ),
+            child: ClipOval(
+              child: Image.asset(
+                'assets/chef.png',
+                width: 45.w,
+                height: 45.h,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                width: 45,
-                height: 45,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: const Color(0xFF2D2F39), // Border color
-                    width: 0.78, // Border width
-                  ),
+          if (isDrawerExpanded) ...[
+            SizedBox(width: 12.w),
+             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Amrita Shrestha",
+                  style: TextStyle(
+                      color: Color(0xFFc0c0c0),
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w400),
                 ),
-                child: ClipOval(
-                  child: Image.asset(
-                    'assets/chef.png',
-                    width: 45,
-                    height: 45,
-                    fit: BoxFit.cover,
-                  ),
+                Text(
+                  "Counter 1",
+                  style: TextStyle(
+                      color: Color(0xFF969696),
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400),
                 ),
-              ),
-              if (isDrawerExpanded) ...[
-                const SizedBox(width: 12),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Amrita Shrestha",
-                      style: TextStyle(
-                          color: Color(0xFFc0c0c0),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400
-                      ),
-                    ),
-                    Text(
-                      "Counter 1",
-                      style: TextStyle(
-                          color: Color(0xFF969696),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400
-                      ),
-                    ),
-                  ],
-                )
               ],
-            ],
-          )
-      );
+            ),
+          ],
+        ],
+      ),
+    );
   }
 
   String _getPageTitle(int index) {
@@ -404,7 +383,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       case 3:
         return const OrderListPage();
       case 4:
-        return  const ReservationPage();
+        return const ReservationPage();
       case 5:
         return const RegisterPage();
       default:

@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import ScreenUtil
 import 'package:RMS/pages/dashboard/sections/guest_flow_analysis.dart';
 import 'package:RMS/pages/dashboard/sections/most_ordered_dishes.dart';
 import 'package:RMS/pages/dashboard/sections/order_type.dart';
@@ -24,7 +25,6 @@ class _DashboardPageState extends State<DashboardPage> {
   int selectedPageIndex = 0; // Tracks the selected page index.
   bool isSelectedHeader = false;
 
-
   void toggleDrawer() {
     setState(() {
       isDrawerExpanded = !isDrawerExpanded;
@@ -36,41 +36,41 @@ class _DashboardPageState extends State<DashboardPage> {
     return Container(
       color: const Color(0xffecf0f3),
       child: SingleChildScrollView(
-        padding: const EdgeInsets.only(left: 94, right: 20, bottom: 20, top: 20),
+        padding: EdgeInsets.only(left: 94.w, right: 20.w, bottom: 20.h, top: 20.h), // Use responsive padding
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
+            // Left Side Content
             Expanded(
               child: Column(
                 children: [
-                  //Header Bar
+                  // Header Bar
 
                   // First section: Summary and Overall Sales
                   SummaryData(),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h), // Use responsive spacing
                   UpcomingReservations(),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
 
                   // Flex section for Staff (Left and Right)
-                   Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
                         child: MostOrderedDishes(),
                       ),
-                      const SizedBox(width: 20),
+                      SizedBox(width: 20.w),
                       Expanded(
                         child: TableStatus(),
                       ),
                     ],
                   ),
 
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
 
                   // Overall Sales repeated (if needed)
                   TotalSalesChart(),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
 
                   // Another Flex section for Staff (Left and Right)
                   Row(
@@ -79,29 +79,30 @@ class _DashboardPageState extends State<DashboardPage> {
                       Expanded(
                         child: RegisterStatus(),
                       ),
-                      const SizedBox(width: 20),
+                      SizedBox(width: 20.w),
                       Expanded(
                         child: OrderType(),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   GuestFlowAnalysis(),
                 ],
               ),
             ),
-            const SizedBox(width: 20,),
-            const SizedBox(
-              width: 418,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    OrderStatus()
-                  ],
-                )
-            )
+            SizedBox(width: 20.w),
+            // Right Side Content (Order Status)
+            SizedBox(
+              width: 418.w, // Use responsive width
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  OrderStatus(),
+                ],
+              ),
+            ),
           ],
-        )
+        ),
       ),
     );
   }

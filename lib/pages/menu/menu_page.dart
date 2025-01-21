@@ -4,7 +4,7 @@ import 'package:RMS/pages/menu/middle_screens/category_section.dart';
 //import 'package:RMS/pages/menu/right_screens/order_section.dart';  // Adjusted import for `OrderSection`
 import 'middle_screens/food_item_grid.dart';
 import 'middle_screens/table_running_card.dart';
-//import 'right_screens/table_running_card.dart';  // Ensure correct import for `TableRunningCard`
+
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
@@ -15,13 +15,13 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   String selectedCategory = 'Burger';
-  List<int> hoveredCards = [];  // This will track which cards are hovered
-  List<int> filteredTables = List.generate(10, (index) => index); // Example data for tables
+  List<int> hoveredCards = [];
+  List<int> filteredTables = List.generate(10, (index) => index);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 96), // Adjust left padding for better alignment
+      padding: const EdgeInsets.only(left: 96),
       child: Row(
         children: [
           // Expanded Column: Takes most of the space
@@ -43,7 +43,7 @@ class _MenuPageState extends State<MenuPage> {
                     selectedCategory: selectedCategory,
                   ),
                 ),
-                // Table Running Cards (Horizontal Scroll View)
+
                 Container(
                   height: 70,
                   padding: const EdgeInsets.all(14),
@@ -75,9 +75,9 @@ class _MenuPageState extends State<MenuPage> {
           ),
           // Fixed Width Container Column: 350px width for order section
           Container(
-            padding: const EdgeInsets.only(left: 12, right: 12, bottom: 30, top: 16),
+            padding: const EdgeInsets.only(left: 12, right: 12, bottom: 30,),
             width: 350,
-            child: const OrderSection(), // Your custom order section widget
+            child: const OrderSection(),
           ),
         ],
       ),

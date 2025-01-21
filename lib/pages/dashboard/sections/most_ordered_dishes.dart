@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import ScreenUtil
 import 'package:fluent_ui/fluent_ui.dart';
 
 class MostOrderedDishes extends StatefulWidget {
@@ -9,15 +10,15 @@ class _MostOrderedDishesState extends State<MostOrderedDishes> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 354,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      height: 354.h, // Using ScreenUtil for height
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h), // Using ScreenUtil for padding
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r), // Using ScreenUtil for border radius
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
-            blurRadius: 8,
+            blurRadius: 8.r, // Responsive blur radius
             offset: const Offset(0, 4),
           ),
         ],
@@ -28,12 +29,12 @@ class _MostOrderedDishesState extends State<MostOrderedDishes> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
+              Text(
                 'Most Ordered Dishes',
                 style: TextStyle(
-                  fontSize: 21,
+                  fontSize: 21.sp, // Responsive font size
                   fontWeight: FontWeight.w600,
-                  color: Color(0xff3e3e3e),
+                  color: const Color(0xff3e3e3e),
                 ),
               ),
               GestureDetector(
@@ -42,35 +43,29 @@ class _MostOrderedDishesState extends State<MostOrderedDishes> {
                 },
                 child: Container(
                   decoration: const BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(color: Color(0xffaaaaaa), width: 1)),
+                    border: Border(bottom: BorderSide(color: Color(0xffaaaaaa), width: 1)),
                   ),
-                  child: const Text(
+                  child: Text(
                     'View All',
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 10.sp, // Responsive font size
                       fontWeight: FontWeight.w700,
-                      color: Color(0xffaaaaaa),
+                      color: const Color(0xffaaaaaa),
                     ),
                   ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h), // Responsive height for spacing
           Expanded(
             child: ListView(
               children: [
-                _buildDishItem(1, 'Chicken Biryani', 'Orders: 26',
-                    'assets/images/recipe/burger/bacon_burger.jpeg'),
-                _buildDishItem(2, 'Double Crust Pizza', 'Orders: 23',
-                    'assets/images/recipe/burger/bacon_burger.jpeg'),
-                _buildDishItem(3, 'Momo Combo x4', 'Orders: 20',
-                    'assets/images/recipe/burger/bacon_burger.jpeg'),
-                _buildDishItem(4, 'Double Cheese Burger', 'Orders: 19',
-                    'assets/images/recipe/burger/bacon_burger.jpeg'),
-                _buildDishItem(5, 'Pineapple Pizza', 'Orders: 16',
-                    'assets/images/recipe/burger/bacon_burger.jpeg'),
+                _buildDishItem(1, 'Chicken Biryani', 'Orders: 26', 'assets/images/recipe/burger/bacon_burger.jpeg'),
+                _buildDishItem(2, 'Double Crust Pizza', 'Orders: 23', 'assets/images/recipe/burger/bacon_burger.jpeg'),
+                _buildDishItem(3, 'Momo Combo x4', 'Orders: 20', 'assets/images/recipe/burger/bacon_burger.jpeg'),
+                _buildDishItem(4, 'Double Cheese Burger', 'Orders: 19', 'assets/images/recipe/burger/bacon_burger.jpeg'),
+                _buildDishItem(5, 'Pineapple Pizza', 'Orders: 16', 'assets/images/recipe/burger/bacon_burger.jpeg'),
               ],
             ),
           ),
@@ -85,37 +80,37 @@ class _MostOrderedDishesState extends State<MostOrderedDishes> {
     final number = parts.length > 1 ? parts[1] : '';
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(vertical: 8.h), // Responsive vertical spacing
       child: Row(
         children: [
           Text(
             rank.toString().padLeft(2, '0'),
-            style: const TextStyle(
-              fontSize: 20,
+            style: TextStyle(
+              fontSize: 20.sp, // Responsive font size
               fontWeight: FontWeight.w700,
-              color: Color(0xff969696),
+              color: const Color(0xff969696),
             ),
           ),
-          const SizedBox(width: 16),
+          SizedBox(width: 16.w), // Responsive width spacing
           ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20.r), // Responsive border radius
             child: Image.asset(
               imagePath,
-              width: 40,
-              height: 40,
+              width: 40.w, // Responsive width for image
+              height: 40.h, // Responsive height for image
               fit: BoxFit.cover,
             ),
           ),
-          const SizedBox(width: 16),
+          SizedBox(width: 16.w), // Responsive width spacing
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                  fontSize: 16,
+                style: TextStyle(
+                  fontSize: 16.sp, // Responsive font size
                   fontWeight: FontWeight.w700,
-                  color: Color(0xff000000),
+                  color: const Color(0xff000000),
                 ),
               ),
               Text.rich(
@@ -123,18 +118,18 @@ class _MostOrderedDishesState extends State<MostOrderedDishes> {
                   children: [
                     TextSpan(
                       text: label,
-                      style: const TextStyle(
-                        fontSize: 14,
+                      style: TextStyle(
+                        fontSize: 14.sp, // Responsive font size
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff818181),
+                        color: const Color(0xff818181),
                       ),
                     ),
                     TextSpan(
                       text: ' $number',
-                      style: const TextStyle(
-                        fontSize: 14,
+                      style: TextStyle(
+                        fontSize: 14.sp, // Responsive font size
                         fontWeight: FontWeight.w700,
-                        color: Color(0xff585858),
+                        color: const Color(0xff585858),
                       ),
                     ),
                   ],
