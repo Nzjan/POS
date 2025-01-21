@@ -1,7 +1,9 @@
+import 'package:RMS/main.dart';
 import 'package:RMS/pages/header_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
+import 'login_screen.dart';
 import 'opening_cash_dialog.dart';
 // drawer items import
 import 'package:RMS/pages/dashboard/dashboard_page.dart';
@@ -265,8 +267,6 @@ class _HomeLayoutState extends State<HomeLayout> {
       ),
     );
   }
-
-
   Widget _buildLogoRow() {
     return Container(
       height: 68,
@@ -293,10 +293,13 @@ class _HomeLayoutState extends State<HomeLayout> {
               padding: const EdgeInsets.only(right: 17),
               child: GestureDetector(
                 onTap: () {
-                  _logout();
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  LoginScreen()),
+                  );
                 },
                 child: const Icon(
-                  Icons.exit_to_app, // Logout icon
+                  Icons.exit_to_app,
                   color: Colors.white,
                   size: 30,
                 ),
@@ -307,12 +310,6 @@ class _HomeLayoutState extends State<HomeLayout> {
       ),
     );
   }
-
-  void _logout() {
-    debugPrint("Logging out...");
-    Navigator.pushReplacementNamed(context, '/login');
-  }
-
 
   Widget _buildBottomRow() {
     return

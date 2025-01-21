@@ -2,7 +2,7 @@ import 'package:RMS/services/shared_preferences_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio/dio.dart';
-import 'package:RMS/home_layout.dart';  // Your next screen
+import 'package:RMS/home_layout.dart';
 
 
 final loginStateProvider = StateNotifierProvider<LoginStateNotifier, LoginState>((ref) {
@@ -70,7 +70,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
 
   void _onEnter1(PointerEvent details) {
     setState(() {
-      _buttonColor1 = const Color(0xFFF8F6F6);
+      _buttonColor1 = const Color(0xFFAD6FE0);
     });
   }
 
@@ -122,7 +122,6 @@ class _LoginFormState extends ConsumerState<LoginForm> {
         loginStateNotifier.setError('Failed to authenticate. Please try again.');
       }
     } on DioException catch (e) {
-
       loginStateNotifier.setError('Invalid Credentials');
     } catch (e) {
 
@@ -161,16 +160,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                     focusColor: Colors.transparent,
                     hoverColor: Colors.transparent,
                   ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
-                    }
-                    if (!RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
-                        .hasMatch(value)) {
-                      return 'Please enter a valid email';
-                    }
-                    return null;
-                  },
+
                 ),
               ),
               Positioned(
@@ -218,12 +208,6 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                       focusColor: Colors.transparent,
                       hoverColor: Colors.transparent,
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
-                      }
-                      return null;
-                    },
                   ),
                 ),
               ),
@@ -271,17 +255,17 @@ class _LoginFormState extends ConsumerState<LoginForm> {
                 onExit: _onExit1,
                 child: ElevatedButton(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(_buttonColor1),
-                    foregroundColor: MaterialStateProperty.all(const Color(0xff292929)),
-                    padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 12, horizontal: 10)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    backgroundColor: WidgetStateProperty.all(_buttonColor1),
+                    foregroundColor: WidgetStateProperty.all(const Color(0xff292929)),
+                    padding: WidgetStateProperty.all(const EdgeInsets.symmetric(vertical: 12, horizontal: 10)),
+                    shape: WidgetStateProperty.all(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                       side: const BorderSide(
                         color: Color(0xFF292929),
                         width: 1,
                       ),
                     )),
-                    textStyle: MaterialStateProperty.all(const TextStyle(
+                    textStyle: WidgetStateProperty.all(const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
                     )),

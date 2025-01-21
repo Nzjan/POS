@@ -16,9 +16,9 @@ class TablePage extends StatefulWidget {
 }
 
 class _TablePageState extends State<TablePage> {
-  String selectedFloor = "All"; // Default selected floor filter
-  String selectedTable = "All"; // Default selected table status filter
-  Set<int> hoveredCards = {}; // Track hovered cards
+  String selectedFloor = "All";
+  String selectedTable = "All";
+  Set<int> hoveredCards = {};
 
   //  List<Map<String, dynamic>> tableData = [
   //   {'status': 'Available', 'number': 'T - 1', 'floor': 'Floor 1', 'capacity': 4},
@@ -53,15 +53,11 @@ class _TablePageState extends State<TablePage> {
            });
          }
        }
-
      }on DioException catch(e){
        debugPrint("Dio Exception");
      }catch(e){
        debugPrint(e.toString());
      }
-
-
-
   }
 
   @override
@@ -78,12 +74,10 @@ class _TablePageState extends State<TablePage> {
     }).toList();
   }
 
-  // Helper method to format the floor as "F - X"
   String formatFloorForDisplay(String floor) {
-    return floor; // If any other floor is passed, return as is.
+    return floor;
   }
 
-  // Dynamically calculate table counts based on the filtered tables
   Map<String, int> get tableCounts {
     Map<String, int> counts = {
       "all": 0,

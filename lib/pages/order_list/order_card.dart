@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class OrderCard extends StatelessWidget {
   final Map<String, dynamic> order;
   final VoidCallback onTap;
-  final bool isSelected; // New property to check if the card is selected
+  final bool isSelected;
 
   const OrderCard({
     Key? key,
     required this.order,
     required this.onTap,
-    this.isSelected = false, // Default is not selected
+    this.isSelected = false,
   }) : super(key: key);
 
   Icon getStatusIcon(String status) {
@@ -86,7 +86,7 @@ class OrderCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 decoration: BoxDecoration(
-                  color: isSelected ? const Color(0xff787676) : const Color(0xFFc0c0c0), // Change color on select
+                  color: isSelected ? const Color(0xff787676) : const Color(0xFFc0c0c0),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(8),
                     topRight: Radius.circular(8),

@@ -97,8 +97,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                       borderRadius: BorderRadius.circular(10),
                                       side: BorderSide(
                                         color: isSelected
-                                            ? Color(0xffaaaaaa) // Border color for selected counter
-                                            : Color(0xffc0c0c0), // Black border color for unselected counters
+                                            ? const Color(0xffaaaaaa) // Border color for selected counter
+                                            : const Color(0xffc0c0c0), // Black border color for unselected counters
                                         width: 1,
                                       ),
                                     )),
