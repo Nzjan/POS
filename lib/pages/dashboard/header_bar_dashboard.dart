@@ -20,6 +20,7 @@ class HeaderBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       margin: EdgeInsets.only(left: 72.w), // Responsive margin
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h), // Responsive padding
       child: Column(

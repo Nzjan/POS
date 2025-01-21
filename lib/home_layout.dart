@@ -24,23 +24,23 @@ class _HomeLayoutState extends State<HomeLayout> {
   bool isDrawerExpanded = false;
   int selectedPageIndex = 0;
   bool isSelectedHeader = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    Future.delayed(const Duration(seconds: 0), () {
-      if (mounted) {
-        showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (context) {
-            return const OpeningCashDialog();
-          },
-        );
-      }
-    });
-  }
+  //
+  // @override
+  // void initState() {
+  //   super.initState();
+  //
+  //   Future.delayed(const Duration(seconds: 0), () {
+  //     if (mounted) {
+  //       showDialog(
+  //         context: context,
+  //         barrierDismissible: false,
+  //         builder: (context) {
+  //           return const OpeningCashDialog();
+  //         },
+  //       );
+  //     }
+  //   });
+  // }
   void toggleDrawer() {
     setState(() {
       isDrawerExpanded = !isDrawerExpanded;
@@ -84,7 +84,7 @@ class _HomeLayoutState extends State<HomeLayout> {
             duration: const Duration(milliseconds: 1),
             left: 0,
             top: 0,
-            width: isDrawerExpanded ? 221.w : 72.w,
+            width: isDrawerExpanded ? 221.w : 70.w,
             child: GestureDetector(
               onTap: () {
                 if (isSelectedHeader) {
@@ -94,10 +94,8 @@ class _HomeLayoutState extends State<HomeLayout> {
                 }
               },
               child: Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xFF161A23),
-                  borderRadius: BorderRadius.circular(12.r),
-                ),
+                height: 832.h,
+                color: const Color(0xFF161A23),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -135,7 +133,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                       label: 'Register',
                       index: 5,
                     ),
-                    SizedBox(height: 40.h),
+                    Spacer(),
                     _buildSidebarHeader("Notification"),
                     Container(
                       margin: EdgeInsets.only(top: 10.h),
