@@ -4,12 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio/dio.dart';
 import 'package:RMS/home_layout.dart';  // Your next screen
 
-// Define a provider for managing the login state.
+
 final loginStateProvider = StateNotifierProvider<LoginStateNotifier, LoginState>((ref) {
   return LoginStateNotifier();
 });
 
-// State model to represent login state (loading, success, error)
+
 class LoginState {
   final bool isLoading;
   final String errorMessage;
@@ -26,7 +26,7 @@ class LoginState {
     return LoginState(isLoading: false, errorMessage: '', isSuccess: false);
   }
 
-  // Copy with method to update state
+
   LoginState copyWith({bool? isLoading, String? errorMessage, bool? isSuccess}) {
     return LoginState(
       isLoading: isLoading ?? this.isLoading,
@@ -36,7 +36,6 @@ class LoginState {
   }
 }
 
-// StateNotifier to manage login state
 class LoginStateNotifier extends StateNotifier<LoginState> {
   LoginStateNotifier() : super(LoginState.initial());
 
@@ -65,19 +64,19 @@ class _LoginFormState extends ConsumerState<LoginForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  bool _obscurePassword = true;  // Controls visibility of the password
+  bool _obscurePassword = true;
 
   Color _buttonColor1 = const Color(0xFFfafafa);
 
   void _onEnter1(PointerEvent details) {
     setState(() {
-      _buttonColor1 = const Color(0xFFF8F6F6); // Light gray color when hovered
+      _buttonColor1 = const Color(0xFFF8F6F6);
     });
   }
 
   void _onExit1(PointerEvent details) {
     setState(() {
-      _buttonColor1 = const Color(0xFFfafafa); // Revert to original background
+      _buttonColor1 = const Color(0xFFfafafa);
     });
   }
 
@@ -88,10 +87,8 @@ class _LoginFormState extends ConsumerState<LoginForm> {
 
     String url = 'http://82.180.147.87:8080/api/v1/:en/login';
 
-    // Create Dio instance
     final dio = Dio();
 
-    // Set loading state
     loginStateNotifier.setLoading();
 
     try {
@@ -118,19 +115,17 @@ class _LoginFormState extends ConsumerState<LoginForm> {
             MaterialPageRoute(builder: (context) => const HomeLayout()),
           );
         } else {
-          // Set error state
           loginStateNotifier.setError('Login failed: ${responseBody['message']}');
         }
       } else {
 
-        // Set error state
         loginStateNotifier.setError('Failed to authenticate. Please try again.');
       }
     } on DioException catch (e) {
-      // Handle Dio specific errors
+
       loginStateNotifier.setError('Invalid Credentials');
     } catch (e) {
-      // Set error state for any other errors
+
       loginStateNotifier.setError('An unexpected error occurred. Please try again.');
     }
   }
@@ -198,7 +193,7 @@ class _LoginFormState extends ConsumerState<LoginForm> {
           ),
           const SizedBox(height: 32),
 
-          // Password Field with Eye Icon
+
           Stack(
             clipBehavior: Clip.none,
             children: [

@@ -33,14 +33,13 @@ class _HomeLayoutState extends State<HomeLayout> {
   // void initState() {
   //   super.initState();
   //
-  //   // Show the dialog after a delay
-  //   Future.delayed(const Duration(seconds: 1), () {
+  //   Future.delayed(const Duration(seconds: 0), () {
   //     if (mounted) {
   //       showDialog(
   //         context: context,
   //         barrierDismissible: false,
   //         builder: (context) {
-  //           return const OpeningCashDialog(); // Show the custom dialog
+  //           return const OpeningCashDialog();
   //         },
   //       );
   //     }
@@ -50,31 +49,30 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //color: Color(0xffecf0f3),
+
       padding: EdgeInsets.zero,
       child: Stack(
         children: [
-          // GestureDetector wrapping the entire screen to detect taps anywhere outside the drawer
+
           GestureDetector(
             onTap: () {
               if (isDrawerExpanded) {
-                toggleDrawer(); // Close the drawer when tapping anywhere outside.
+                toggleDrawer();
               }
             },
             child: Row(
               children: [
-                // Main content area (it stays unaffected by the drawer)
                 Expanded(
                   child: Column(
                     children: [
                       //Header Bar
                       HeaderBar(
                         title: _getPageTitle(selectedPageIndex),
-                        onMenuTap: toggleDrawer, // Toggles drawer on menu tap.
+                        onMenuTap: toggleDrawer,
                         selectedPageIndex: selectedPageIndex,
                       ),
 
-                      // The actual page content
+
                       Expanded(
                         child: _getPageContent(selectedPageIndex),
                       ),
@@ -85,7 +83,7 @@ class _HomeLayoutState extends State<HomeLayout> {
             ),
           ),
 
-          // Drawer container (overlay on top of the main content)
+
           AnimatedPositioned(
             duration: const Duration(milliseconds: 1),
             left: 0,
@@ -94,7 +92,7 @@ class _HomeLayoutState extends State<HomeLayout> {
             // Expanded or collapsed width.
             child: GestureDetector(
               onTap: () {
-                // This will reset the selection when tapping outside
+
                 if (isSelectedHeader) {
                   setState(() {
                     isSelectedHeader = false;
@@ -196,17 +194,17 @@ class _HomeLayoutState extends State<HomeLayout> {
                       icon,
                       size: 24,
                       color: isSelectedMain
-                          ? Colors.white // White icon when selected
-                          : const Color(0xFF8A8C91), // Default icon color
+                          ? Colors.white
+                          : const Color(0xFF8A8C91),
                     ),
                     if (isDrawerExpanded) ...[
-                      const SizedBox(width: 16), // Space between icon and text
+                      const SizedBox(width: 16),
                       Text(
                         label,
                         style: TextStyle(
                           color: isSelectedMain
-                              ? Colors.white // White text when selected
-                              : const Color(0xFF8A8C91), // Default text color
+                              ? Colors.white
+                              : const Color(0xFF8A8C91),
                           fontSize: 14,
                         ),
                       ),
@@ -222,42 +220,40 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 
-  // Sidebar Section Header with color change when selected
+
   Widget _buildSidebarHeader(String title) {
     return GestureDetector(
       onTap: () {
-        // Toggle the selection on tap (simulating selection change)
+
         setState(() {
           isSelectedHeader = !isSelectedHeader;
         });
       },
       child: Column(
         children: [
-          // Main menu container
+
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             decoration: BoxDecoration(
               color: isSelectedHeader ? const Color(0xFF2D2F39) : null,
-              // Background color change when selected
+
               borderRadius: BorderRadius.circular(6),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(
-                  Iconsax.notification, // Notification icon
+                  Iconsax.notification,
                   size: 24,
-                  color: isSelectedHeader ? Colors.white : const Color(
-                      0xFF8A8C91), // Icon color change when selected
+                  color: isSelectedHeader ? Colors.white : const Color(0xFF8A8C91),
                 ),
                 if (isDrawerExpanded) ...[
-                  const SizedBox(width: 16), // Space between icon and text
+                  const SizedBox(width: 16),
                   Text(
-                    title, // Use the passed title for the text
+                    title,
                     style: TextStyle(
-                      color: isSelectedHeader ? Colors.white : const Color(
-                          0xFF8A8C91), // Text color change when selected
+                      color: isSelectedHeader ? Colors.white : const Color(0xFF8A8C91),
                       fontSize: 14,
                     ),
                   ),
@@ -271,50 +267,56 @@ class _HomeLayoutState extends State<HomeLayout> {
   }
 
 
-  // Header Section with Logo
   Widget _buildLogoRow() {
     return Container(
       height: 68,
-      decoration: const BoxDecoration(
-        color: Color(0xFF2D2F39),
-        // borderRadius: BorderRadius.only(
-        //   topLeft: Radius.circular(12),
-        //   topRight: Radius.circular(12),
-        // ),
-        // border: Border(
-        //   bottom: BorderSide(
-        //     color: Color(0xFF8B8B8B),
-        //     width: 2,
-        //   ),
-        // ),
-      ),
-      child: Stack(
+      color: const Color(0xFF2D2F39),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Positioned(
-            left: 17, // Keep a fixed distance from the left side
-            top: 17, // Adjust to position the logo vertically
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
             child: GestureDetector(
-              //onTap: toggleSidebar, // Toggle sidebar when the logo is clicked
               child: SizedBox(
-                width: 30, // Fixed logo width
-                height: 30, // Fixed logo height
+                width: 30,
+                height: 30,
                 child: Image.asset(
-                  'assets/pos_logo.png', // Replace with your logo path
+                  'assets/pos_logo.png',
                   fit: BoxFit.contain,
                 ),
               ),
             ),
           ),
+
+          if (isDrawerExpanded) ...[
+            Padding(
+              padding: const EdgeInsets.only(right: 17),
+              child: GestureDetector(
+                onTap: () {
+                  _logout();
+                },
+                child: const Icon(
+                  Icons.exit_to_app, // Logout icon
+                  color: Colors.white,
+                  size: 30,
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );
   }
 
-  // Theme Toggle (Bottom Section)
+  void _logout() {
+    debugPrint("Logging out...");
+    Navigator.pushReplacementNamed(context, '/login');
+  }
+
+
   Widget _buildBottomRow() {
     return
       Container(
-
           height: 76,
           padding: const EdgeInsets.only(top: 15, bottom: 16, left: 12,),
           decoration: const BoxDecoration(
@@ -327,7 +329,7 @@ class _HomeLayoutState extends State<HomeLayout> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: 45, // Set width and height to 45 for the circular area
+                width: 45,
                 height: 45,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -338,15 +340,15 @@ class _HomeLayoutState extends State<HomeLayout> {
                 ),
                 child: ClipOval(
                   child: Image.asset(
-                    'assets/chef.png', // Replace with your image path
+                    'assets/chef.png',
                     width: 45,
                     height: 45,
-                    fit: BoxFit.cover, // Ensure the image fills the circle
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
               if (isDrawerExpanded) ...[
-                const SizedBox(width: 12), // Space between icon and text
+                const SizedBox(width: 12),
                 const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -354,7 +356,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                     Text(
                       "Amrita Shrestha",
                       style: TextStyle(
-                          color: Color(0xFFc0c0c0), // Default text color
+                          color: Color(0xFFc0c0c0),
                           fontSize: 12,
                           fontWeight: FontWeight.w400
                       ),
@@ -362,14 +364,13 @@ class _HomeLayoutState extends State<HomeLayout> {
                     Text(
                       "Counter 1",
                       style: TextStyle(
-                          color: Color(0xFF969696), // Default text color
+                          color: Color(0xFF969696),
                           fontSize: 14,
                           fontWeight: FontWeight.w400
                       ),
                     ),
                   ],
                 )
-
               ],
             ],
           )
@@ -398,7 +399,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   Widget _getPageContent(int selectedPageIndex,) {
     switch (selectedPageIndex) {
       case 0:
-        return const TablePage();
+        return const DashboardPage();
       case 1:
         return const TablePage();
       case 2:
