@@ -335,11 +335,7 @@ class _FoodItemGridState extends State<FoodItemGrid> {
         if (data["success"] == true) {
           Map<String, List<Map<String, dynamic>>> temp = {
             "Pizza": [],
-            "Burger": [],
-            "Juice": [],
-            "Dessert": [],
             "Wine": [],
-            "Coffee": [],
           };
           for (int i = 0; i < data["data"].length; i++) {
             String status = data["data"][i]["category"]['name'];
@@ -350,8 +346,7 @@ class _FoodItemGridState extends State<FoodItemGrid> {
                 "veg": !data["data"][i]["isNonVeg"],
                 "image": data["data"][i]["category"]['photo'][0]
               });
-            }
-            else if (status == "Wine") {
+            } else if (status == "Wine") {
               temp['Wine']?.add({
                 "name": data["data"][i]["name"],
                 "price": data["data"][i]["price"],
@@ -361,7 +356,7 @@ class _FoodItemGridState extends State<FoodItemGrid> {
             }
           }
           setState(() {
-            categoryItems=temp;
+            categoryItems = temp;
           });
         }
       }
