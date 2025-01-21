@@ -456,7 +456,7 @@ IconData getStatusIcon(int completedItems, int totalItems) {
   if (completedItems == totalItems) {
     return FontAwesomeIcons.solidCircleCheck; // Served icon
   } else if (completedItems > 0) {
-    return FontAwesomeIcons.clock; // In progress icon
+    return Icons.timer_outlined; // In progress icon
   } else {
     return FontAwesomeIcons.circle; // Pending icon
   }

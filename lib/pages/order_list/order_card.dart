@@ -17,19 +17,19 @@ class OrderCard extends StatelessWidget {
       case 'Ready':
         return const Icon(
           Icons.check_circle,
-          color: Colors.green,
+          color: Color(0xff00D03E),
           size: 18,
         );
       case 'Pending':
         return const Icon(
           Icons.circle_outlined,
-          color: Colors.grey,
+          color: Color(0xffAAAAAA),
           size: 18,
         );
       case 'In Progress':
         return const Icon(
           Icons.timer_outlined,
-          color: Colors.orange,
+          color: Color(0xffF8B200),
           size: 18,
         );
       default:
@@ -86,7 +86,7 @@ class OrderCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 decoration: BoxDecoration(
-                  color: isSelected ? Colors.blue[100] : const Color(0xFFc0c0c0), // Change color on select
+                  color: isSelected ? const Color(0xff787676) : const Color(0xFFc0c0c0), // Change color on select
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(8),
                     topRight: Radius.circular(8),
