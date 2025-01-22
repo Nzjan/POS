@@ -16,11 +16,6 @@ class _ReservationPageState extends State<ReservationPage> {
   int selectedPageIndex = 0; // Tracks the selected page index.
   bool isSelectedHeader = false;
 
-  void toggleDrawer() {
-    setState(() {
-      isDrawerExpanded = !isDrawerExpanded;
-    });
-  }
 
   // Hardcoded list of reservation data (JSON format-like)
   List<Map<String, String>> items = [

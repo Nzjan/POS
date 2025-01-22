@@ -370,4 +370,3 @@ class _ReservationDetailsState extends State<ReservationDetails> {
     );
   }
 }
-
