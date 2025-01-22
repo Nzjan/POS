@@ -1,7 +1,5 @@
 import 'package:RMS/pages/reservation/reservation_details.dart';
 import 'package:flutter/material.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:iconsax/iconsax.dart';
 
 class ReservationPage extends StatefulWidget {
   const ReservationPage({super.key});
@@ -11,190 +9,258 @@ class ReservationPage extends StatefulWidget {
 }
 
 class _ReservationPageState extends State<ReservationPage> {
-  int _selectedIndex = 0;
-  Map<String, dynamic>? selectedOrder;
-  String? selectedStatus = 'All';
-  String? selectedOperations = 'Running Order';
+  int selectedIndex = 0;  // Defaulting to 0 instead of nullable int
+  Map<String, dynamic>? selectedReserve;
 
-  final List<String> tabLabels = ['Dine In', 'Take Away', 'Delivery'];
-  final List<String> status = ['All', 'Pending', 'In Progress', 'Ready'];
-  final List<String> operations = ['Running Order', 'Completed Order'];
+  final List<String> tabLabels = ['Upcoming Reservation', 'Reservation History'];
 
-
-  final List<List<Map<String, dynamic>>> tabContent = [
-    // Tab 1: Running Orders
+  List<List<Map<String, dynamic>>> tabContent = [
     [
       {
-        'id': '123',
-        'time': '12:00 PM',
-        'seated_time': '12:00 PM',
-        'payment_time': '1:45:23',
-        'operation': 'Running Order',
-        'type': 'Dine-in',
-        'table_number': '5',
-        'floor_number': '1',
-        'table_capacity': '6',
-        'total_customer': '2',
-        'waiter_name': 'John Doe',
-        'price': '1000',
-        'payment_conformation': 'Paid',
-        'progress': '1/3',
-        'items': [
-          {'name': 'Burger', 'quantity': 2, 'status': 'ready'},
-          {'name': 'Fries', 'quantity': 1, 'status': 'pending'},
-        ],
+        'reserve_no': 'R-0001',
+        'customer': 'Mr. Bond',
+        'total_customer': '3',
+        'date': '12-01-2023',
       },
       {
-        'id': '124',
-        'time': '1:00 PM',
-        'seated_time': '12:00 PM',
-        'payment_time': '9:45:23',
-        'operation': 'Running Order',
-        'type': 'Dine-in',
-        'table_number': '10',
-        'floor_number': '2',
-        'table_capacity': '6',
+        'reserve_no': 'R-0002',
+        'customer': 'Ms. Watson',
         'total_customer': '2',
-        'waiter_name': 'Jane Smith',
-        'price': '1500',
-        'payment_conformation': 'Unpaid',
-
-        'progress': '1/2',
-        'items': [
-          {'name': 'Pizza', 'quantity': 1, 'status': 'pending'},
-          {'name': 'Soda', 'quantity': 1, 'status': 'ready'},
-        ],
+        'date': '15-02-2023',
       },
     ],
-    // Tab 2: Completed Orders
     [
       {
-        'id': '125',
-        'time': '2:00 PM',
-        'operation': 'Completed Order',
-        'type': 'Take Away',
-        'customer_name': 'Alice Brown',
-        'phone': '123-456-7890',
-        'price': '2000',
-        'payment_status': 'Paid',
-        'cook_status': 'Ready',
-        'payment_conformation': 'Unpaid',
-        'progress': '2/2',
-        'items': [
-          {'name': 'Pasta', 'quantity': 1, 'status': 'ready'},
-          {'name': 'Garlic Bread', 'quantity': 2, 'status': 'ready'},
-        ],
+        'reserve_no': 'R-0003',
+        'customer': 'Mr. Smith',
+        'total_customer': '1',
+        'date': '20-03-2024',
+        'total_items': '5',
+        'total_amount': '100',
       },
-    ],
-    // Tab 3: Delivery Orders
-    [
       {
-        'id': '126',
-        'time': '3:00 PM',
-        'operation': 'Running Order',
-        'type': 'Delivery',
-        'customer_name': 'Bob White',
-        'phone': '098-765-4321',
-        'address': '123 Main St',
-        'price': '1800',
-        'payment_status': 'Pending',
-        'payment_conformation': 'Paid',
-        'cook_status': 'In Progress',
-        'progress': '1/3',
-        'items': [
-          {'name': 'Salad', 'quantity': 1, 'status': 'pending'},
-          {'name': 'Smoothie', 'quantity': 2, 'status': 'ready'},
-        ],
+        'reserve_no': 'R-0004',
+        'customer': 'Mrs. Green',
+        'total_customer': '5',
+        'phone_no': '9456789012',
+        'date': '10-05-2023',
+        'time': '16:00 - 17:00',
+        'day': 'PM',
+        'total_items': '6',
+        'total_amount': '150',
       },
     ],
   ];
 
   void _onTabSelected(int index) {
     setState(() {
-      _selectedIndex = index;
-      selectedOrder = null;
+      selectedIndex = index;
+      selectedReserve = null;
     });
   }
 
   List<Map<String, dynamic>> getFilteredContent() {
-    return tabContent[_selectedIndex].where((order) {
-      bool matchesStatus = selectedStatus == 'All' || order['payment_status'] == selectedStatus;
-      bool matchesOperation = order['operation'] == selectedOperations;
-      return matchesStatus && matchesOperation;
-    }).toList();
+    if (selectedIndex < 0 || selectedIndex >= tabContent.length) {
+      return [];
+    }
+    return tabContent[selectedIndex];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(left: 24, right: 20,),
+        padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
+            // Left Column with Tabs
             Expanded(
-              flex: 3,
+              flex: 2,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Tabs
                   TabContent(
                     tabLabels: tabLabels,
-                    selectedIndex: _selectedIndex,
+                    selectedIndex: selectedIndex,
                     onTabSelected: _onTabSelected,
                   ),
                   const SizedBox(height: 20),
-                  SearchAndFilter(
-                    selectedStatus: selectedStatus,
-                    selectedOperations: selectedOperations,
-                    status: status,
-                    operations: operations,
-                    onStatusChanged: (value) {
-                      setState(() {
-                        selectedStatus = value;
-                      });
-                    },
-                    onOperationChanged: (value) {
-                      setState(() {
-                        selectedOperations = value;
-                      });
-                    },
-                  ),
-                  const SizedBox(height: 20),
+                  // Reservation Cards Scrollable List
                   Expanded(
-                    child: Wrap(
-                      spacing: 20.0,
-                      runSpacing: 20.0,
-                      children: List.generate(getFilteredContent().length, (index) {
-                        final order = getFilteredContent()[index];
-                        return SizedBox(
-                            width: 250,
-                            height: 150,
-                            child: OrderCard(
-                              order: order,
-                              onTap: () {
-                                setState(() {
-                                  selectedOrder = order; // Set the selected order
-                                });
-                              },
-                              isSelected: selectedOrder == order, // Check if this card is selected
-                            )
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Wrap(
+                          spacing: 24,
+                          runSpacing: 24,
+                          children: List.generate(
+                            getFilteredContent().length,
+                                (index) {
+                              final reserve = getFilteredContent()[index];
+                              bool isSelected = selectedReserve == reserve;
 
-                        );
-                      }),
+                              return GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    selectedReserve = reserve;
+                                  });
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.zero,
+                                  width: 196,
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                                    color: isSelected
+                                        ? (selectedIndex == 1 ? const Color(0xFFecf0f3) : Colors.white)
+                                        : Colors.white,  // Body container stays white even when unselected
+                                    border: Border.all(
+                                      color: const Color(0xFFb1bac8),
+                                      width: 1,
+                                    ),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      // Reservation number container
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                                        height: 29,
+                                        width: 196,
+                                        decoration: BoxDecoration(
+                                          borderRadius: const BorderRadius.only(
+                                              topLeft: Radius.circular(8),
+                                              topRight: Radius.circular(8)),
+                                          color: isSelected
+                                              ? (selectedIndex == 1
+                                              ? const Color(0xFFecf0f3)  // White color for Reservation History when selected
+                                              : const Color(0xFFc8d0d9))  // Different color for Upcoming Reservation
+                                              : (selectedIndex == 1
+                                              ? Colors.white  // White color for Reservation History when unselected
+                                              : const Color(0xFFecf0f3)),  // Default color for Upcoming Reservation
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            reserve['reserve_no']!,
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 14,
+                                              color: Color(0xFF333333),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 12, right: 12, bottom: 7, top: 4),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(
+                                                  reserve['customer']!,
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 14,
+                                                    color: Color(0xFF333333),
+                                                  ),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    const Icon(
+                                                      Icons.people,
+                                                      size: 15,
+                                                    ),
+                                                    const SizedBox(width: 5),
+                                                    Text(
+                                                      reserve['total_customer']!,
+                                                      style: const TextStyle(
+                                                        fontWeight: FontWeight.w700,
+                                                        fontSize: 14,
+                                                        color: Color(0xFF333333),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 4),
+                                            Text(
+                                              reserve['date']!,
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                            if (selectedIndex == 0)
+                                              const Text(
+                                                "(in 3 days)",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 10,
+                                                  color: Colors.black,
+                                                ),
+                                              )
+                                            else
+                                              Column(
+                                                children: [
+                                                  const Divider(
+                                                    color: Color(0xfff0f0f0),
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        'Items: ${reserve['total_items']}',
+                                                        style: const TextStyle(
+                                                          fontWeight: FontWeight.w500,
+                                                          fontSize: 12,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        '\$${reserve['total_amount']}',
+                                                        style: const TextStyle(
+                                                          fontWeight: FontWeight.w500,
+                                                          fontSize: 12,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ),
+
+                                                    ],
+                                                  ),
+                                                ],
+                                              )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                                ,
+                              );
+                            },
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
+            // Right Panel for Reservation Details
             Container(
-              width: 326,
-              height: 832,
+              width: 350,
               decoration: const BoxDecoration(
                 border: Border(
                   left: BorderSide(color: Color(0xffc2c2c2), width: 2),
                 ),
               ),
-              child: selectedOrder == null
-                  ? const Center(child: Text('Select an order to view details'))
-                  : ReservationDetails(order: selectedOrder!),
+              child: selectedReserve == null
+                  ? const Center(child: Text(''))
+                  : ReservationDetails(reserve: selectedReserve!),
             ),
           ],
         ),
@@ -203,6 +269,7 @@ class _ReservationPageState extends State<ReservationPage> {
   }
 }
 
+// TabContent Widget
 class TabContent extends StatelessWidget {
   final List<String> tabLabels;
   final int selectedIndex;
@@ -250,326 +317,3 @@ class TabContent extends StatelessWidget {
   }
 }
 
-class SearchAndFilter extends StatelessWidget {
-  final String? selectedStatus;
-  final String? selectedOperations;
-  final List<String> status;
-  final List<String> operations;
-  final ValueChanged<String?> onStatusChanged;
-  final ValueChanged<String?> onOperationChanged;
-
-  const SearchAndFilter({
-    required this.selectedStatus,
-    required this.selectedOperations,
-    required this.status,
-    required this.operations,
-    required this.onStatusChanged,
-    required this.onOperationChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Container(
-            height: 46,
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, ),
-            decoration: BoxDecoration(
-              color: const Color(0xffffffff),
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(width: 0.6, color: const Color(0xffadadad)),
-            ),
-            child: const Row(
-              children: [
-                Icon(Iconsax.search_favorite, color: Color(0xff3e3e3e), size: 18),
-                SizedBox(width: 8.0),
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search',
-                      hintStyle: TextStyle(fontSize: 12.0, color: Color(0xffadadad)),
-                      border: InputBorder.none,
-                    ),
-                    style: TextStyle(fontSize: 12.0, color: Colors.black),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        const SizedBox(width: 24),
-        Container(
-          width: 157,
-          height: 46,
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            border: Border.all(color: const Color(0xffd1d1d1), width: 1),
-          ),
-          child: DropdownButton2<String>(
-            value: selectedStatus,
-            onChanged: onStatusChanged,
-            isExpanded: true,
-            underline: const SizedBox(),
-            hint: const Center(child: Text("Status")),
-            items: status.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
-        ),
-        const SizedBox(width: 18),
-        Container(
-          width: 157,
-          height: 46,
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            border: Border.all(color: const Color(0xffd1d1d1), width: 1),
-          ),
-          child: DropdownButton2<String>(
-            value: selectedOperations,
-            onChanged: onOperationChanged,
-            isExpanded: true,
-            underline: const SizedBox(),
-            hint: const Center(child: Text("Operation")),
-            items: operations.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
-        ),
-      ],
-    );
-  }
-}
-class OrderCard extends StatelessWidget {
-  final Map<String, dynamic> order;
-  final VoidCallback onTap;
-  final bool isSelected;
-
-  const OrderCard({
-    Key? key,
-    required this.order,
-    required this.onTap,
-    this.isSelected = false,
-  }) : super(key: key);
-
-  Icon getStatusIcon(String status) {
-    switch (status) {
-      case 'Ready':
-        return const Icon(
-          Icons.check_circle,
-          color: Color(0xff00D03E),
-          size: 18,
-        );
-      case 'Pending':
-        return const Icon(
-          Icons.circle_outlined,
-          color: Color(0xffAAAAAA),
-          size: 18,
-        );
-      case 'In Progress':
-        return const Icon(
-          Icons.timer_outlined,
-          color: Color(0xffF8B200),
-          size: 18,
-        );
-      default:
-        return const Icon(
-          Icons.cancel,
-          color: Colors.red,
-          size: 18,
-        );
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 4,
-              offset: const Offset(0, 0),
-            ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Top Header with Time
-            if (order['type'] == 'Dine-in') ...[
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                decoration: BoxDecoration(
-                  color: isSelected ?  const Color(0xff787676) : const Color(0xFFc0c0c0), // Change color on select
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(8),
-                    topRight: Radius.circular(8),
-                  ),
-                ),
-                child: Center(
-                  child: Text(
-                    order['time'],
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.black,
-                      fontFamily: 'Lato',
-                    ),
-                  ),
-                ),
-              ),
-            ] else ...[
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                decoration: BoxDecoration(
-                  color: isSelected ? const Color(0xff787676) : const Color(0xFFc0c0c0),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(8),
-                    topRight: Radius.circular(8),
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    getStatusIcon(order['cook_status']),
-                    const SizedBox(width: 8),
-                    Text(
-                      order['cook_status'],
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.black,
-                        fontFamily: 'Lato',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-            const SizedBox(height: 12),
-            Container(
-              padding: const EdgeInsets.only(left: 12, right: 12, bottom: 5),
-              child: Column(
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '#${order['id']}',
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Lato',
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          if (order['type'] == 'Dine-in') ...[
-                            Row(
-                              children: [
-                                Text(
-                                  'T-${order['table_number']}',
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.grey,
-                                    fontFamily: 'Lato',
-                                  ),
-                                ),
-                                Text(
-                                  ' F-${order['floor_number']}',
-                                  style: const TextStyle(
-                                    fontSize: 10,
-                                    color: Colors.grey,
-                                    fontFamily: 'Lato',
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ] else ...[
-                            Text(
-                              '${order['customer_name']}',
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey,
-                                fontFamily: 'Lato',
-                              ),
-                            ),
-                          ]
-                        ],
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Text(
-                          order['type'],
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                            fontFamily: 'Lato',
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Divider(color: Color(0xfff0f0f0)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '\$${order['price']}',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Lato',
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: order['payment_conformation'] == 'Paid' ? Colors.green : Colors.transparent,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Text(
-                          order['payment_conformation'],
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                            fontFamily: 'Lato',
-                          ),
-                        ),
-                      ),
-                      Text(
-                        '${order['progress']}',
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'Lato',
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

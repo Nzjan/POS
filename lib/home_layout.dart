@@ -77,7 +77,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                   label: 'Register',
                   index: 5,
                 ),
-                Spacer(),
+                const Spacer(),
                 _buildSidebarHeader("Notification"),
                 Container(
                   margin: EdgeInsets.only(top: 10.h),
@@ -294,14 +294,14 @@ class _HomeLayoutState extends State<HomeLayout> {
                 Text(
                   "Amrita Shrestha",
                   style: TextStyle(
-                      color: Color(0xFFc0c0c0),
+                      color: const Color(0xFFc0c0c0),
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400),
                 ),
                 Text(
                   "Counter 1",
                   style: TextStyle(
-                      color: Color(0xFF969696),
+                      color: const Color(0xFF969696),
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w400),
                 ),
@@ -335,7 +335,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   Widget _getPageContent(int selectedPageIndex,) {
     switch (selectedPageIndex) {
       case 0:
-        return const DashboardPage();
+        return const ReservationPage();
       case 1:
         return const TablePage();
       case 2:
@@ -343,7 +343,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       case 3:
         return const OrderListPage();
       case 4:
-        return  ReservationPage();
+        return  const ReservationPage();
       case 5:
         return const RegisterPage();
       default:
