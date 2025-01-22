@@ -8,7 +8,7 @@ import 'package:RMS/pages/dashboard/sections/total_sales.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 // Sections
-import 'sections/order_status/order_status.dart';
+import 'sections/order_status.dart';
 import 'sections/upcoming_reservation.dart';
 
 import 'sections/summary_data.dart';

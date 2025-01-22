@@ -1,10 +1,8 @@
 import 'package:RMS/pages/menu/right_screens/right.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:RMS/pages/menu/middle_screens/category_section.dart';
-//import 'package:RMS/pages/menu/right_screens/order_section.dart';  // Adjusted import for `OrderSection`
 import 'middle_screens/food_item_grid.dart';
 import 'middle_screens/table_running_card.dart';
-
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});

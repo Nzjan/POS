@@ -21,7 +21,7 @@ class HeaderBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      margin: EdgeInsets.only(left: 72.w), // Responsive margin
+      margin: EdgeInsets.only(left: 70.w), // Responsive margin
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h), // Responsive padding
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

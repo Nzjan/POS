@@ -204,9 +204,10 @@ class _DineInOrderContent extends StatelessWidget {
                 child: Center(
                   child: Text(
                     order.table!,
-                    style: const TextStyle(
+                    style:  TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w700,
+                      fontSize: 14.sp,
                       fontFamily: 'Lato',
                     ),
                   ),
@@ -293,7 +294,7 @@ class _TakeAwayOrderContent extends StatelessWidget {
                 child: Center(
                   child: Text(
                     order.orderId,
-                    style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
+                    style:  TextStyle(color: Colors.black, fontWeight: FontWeight.w700,fontSize: 14.sp,),
                   ),
                 ),
               ),
@@ -374,7 +375,7 @@ class _DeliveryOrderContent extends StatelessWidget {
                 child: Center(
                   child: Text(
                     order.orderId,
-                    style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
+                    style:  TextStyle(color: Colors.black, fontWeight: FontWeight.w700,fontSize: 14.sp,),
                   ),
                 ),
               ),
