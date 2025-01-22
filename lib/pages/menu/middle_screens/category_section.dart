@@ -2,8 +2,8 @@
 import 'package:fluent_ui/fluent_ui.dart';
 
 class CategorySection extends StatelessWidget {
-  final String selectedCategory; // Added this to receive the selected category
-  final Function(String) onCategorySelected; // Callback for category selection
+  final String selectedCategory;
+  final Function(String) onCategorySelected;
 
   const CategorySection({
     super.key,
@@ -16,10 +16,10 @@ class CategorySection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(8.0),
       alignment:
-          Alignment.topLeft, // Ensures the container is aligned to the start
+          Alignment.topLeft,
       child: Column(
         crossAxisAlignment:
-            CrossAxisAlignment.start, // Align child widgets to the start
+            CrossAxisAlignment.start,
         children: [
           // First Row: "Category" text
           const Text(
@@ -168,9 +168,9 @@ class _CategorySelectorState extends State<CategorySelector> {
           onEnter: (_) => setState(() => isHovered = true),
           onExit: (_) => setState(() => isHovered = false),
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 1),
             width: 92,
-            height: 79,
+            height: 80,
             padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
               color: widget.isSelected ? const Color(0xfff4ebfc) : Colors.white,

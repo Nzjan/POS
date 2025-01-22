@@ -1,4 +1,4 @@
-import 'package:RMS/pages/dashboard/header_bar_dashboard.dart';
+import 'package:RMS/pages/header_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
@@ -24,123 +24,86 @@ class _HomeLayoutState extends State<HomeLayout> {
   bool isDrawerExpanded = false;
   int selectedPageIndex = 0;
   bool isSelectedHeader = false;
-  //
-  // @override
-  // void initState() {
-  //   super.initState();
-  //
-  //   Future.delayed(const Duration(seconds: 0), () {
-  //     if (mounted) {
-  //       showDialog(
-  //         context: context,
-  //         barrierDismissible: false,
-  //         builder: (context) {
-  //           return const OpeningCashDialog();
-  //         },
-  //       );
-  //     }
-  //   });
-  // }
+
   void toggleDrawer() {
     setState(() {
       isDrawerExpanded = !isDrawerExpanded;
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.zero,
-      child: Stack(
+    return Scaffold(
+      body: Row(
         children: [
-          GestureDetector(
-            onTap: () {
-              if (isDrawerExpanded) {
-                toggleDrawer();
-              }
-            },
-            child: Row(
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 1),
+            width: isDrawerExpanded ? 221.w : 70.w,
+            color: const Color(0xFF161A23),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Column(
-                    children: [
-                      // Header Bar
-                      HeaderBar(
-                        title: _getPageTitle(selectedPageIndex),
-                        onMenuTap: toggleDrawer,
-                        selectedPageIndex: selectedPageIndex,
-                      ),
-                      Expanded(
-                        child: _getPageContent(selectedPageIndex),
-                      ),
-                    ],
-                  ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 10.h),
+                  child: _buildLogoRow(),
+                ),
+                _buildDrawerItem(
+                  icon: FontAwesomeIcons.house,
+                  label: 'Dashboard',
+                  index: 0,
+                ),
+                _buildDrawerItem(
+                  icon: FontAwesomeIcons.chair,
+                  label: 'Table',
+                  index: 1,
+                ),
+                _buildDrawerItem(
+                  icon: FontAwesomeIcons.list,
+                  label: 'Menu',
+                  index: 2,
+                ),
+                _buildDrawerItem(
+                  icon: FontAwesomeIcons.firstOrder,
+                  label: 'Order List',
+                  index: 3,
+                ),
+                _buildDrawerItem(
+                  icon: FontAwesomeIcons.calendar,
+                  label: 'Reservation',
+                  index: 4,
+                ),
+                _buildDrawerItem(
+                  icon: FontAwesomeIcons.registered,
+                  label: 'Register',
+                  index: 5,
+                ),
+                Spacer(),
+                _buildSidebarHeader("Notification"),
+                Container(
+                  margin: EdgeInsets.only(top: 10.h),
+                  child: _buildBottomRow(),
                 ),
               ],
             ),
           ),
-          AnimatedPositioned(
-            duration: const Duration(milliseconds: 1),
-            left: 0,
-            top: 0,
-            width: isDrawerExpanded ? 221.w : 70.w,
+          Expanded(
             child: GestureDetector(
               onTap: () {
-                if (isSelectedHeader) {
-                  setState(() {
-                    isSelectedHeader = false;
-                  });
+                if (isDrawerExpanded) {
+                  toggleDrawer();
                 }
               },
-              child: Container(
-                height: 832.h,
-                color: const Color(0xFF161A23),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: 10.h),
-                      child: _buildLogoRow(),
-                    ),
-                    _buildDrawerItem(
-                      icon: FontAwesomeIcons.house,
-                      label: 'Dashboard',
-                      index: 0,
-                    ),
-                    _buildDrawerItem(
-                      icon: FontAwesomeIcons.chair,
-                      label: 'Table',
-                      index: 1,
-                    ),
-                    _buildDrawerItem(
-                      icon: FontAwesomeIcons.list,
-                      label: 'Menu',
-                      index: 2,
-                    ),
-                    _buildDrawerItem(
-                      icon: FontAwesomeIcons.firstOrder,
-                      label: 'Order List',
-                      index: 3,
-                    ),
-                    _buildDrawerItem(
-                      icon: FontAwesomeIcons.calendar,
-                      label: 'Reservation',
-                      index: 4,
-                    ),
-                    _buildDrawerItem(
-                      icon: FontAwesomeIcons.registered,
-                      label: 'Register',
-                      index: 5,
-                    ),
-                    Spacer(),
-                    _buildSidebarHeader("Notification"),
-                    Container(
-                      margin: EdgeInsets.only(top: 10.h),
-                      child: _buildBottomRow(),
-                    ),
-                  ],
-                ),
+              child: Column(
+                children: [
+                  HeaderBar(
+                    title: _getPageTitle(selectedPageIndex),
+                    onMenuTap: toggleDrawer,
+                    selectedPageIndex: selectedPageIndex,
+                  ),
+                  Expanded(
+                    child: _getPageContent(selectedPageIndex),
+                  ),
+                ],
               ),
             ),
           ),
@@ -164,7 +127,6 @@ class _HomeLayoutState extends State<HomeLayout> {
       },
       child: Column(
         children: [
-          // Main menu container
           Container(
             margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
@@ -325,7 +287,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           ),
           if (isDrawerExpanded) ...[
             SizedBox(width: 12.w),
-             Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

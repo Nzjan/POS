@@ -2,7 +2,7 @@ import 'package:RMS/home_layout.dart';
 import 'package:RMS/login_screen.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import this package
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -53,7 +53,7 @@ class _EntryPageState extends State<EntryPage> {
     return ScaffoldPage(
       content: Container(
         height: 832.h,
-        width: 1219.w,
+        width: 1280.w,
         color: const Color(0xff161a23),
         child: Center(
           child: Image.asset(

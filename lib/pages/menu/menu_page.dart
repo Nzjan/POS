@@ -19,7 +19,7 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 96),
+      padding: const EdgeInsets.only(left: 24,),
       child: Row(
         children: [
           // Expanded Column: Takes most of the space

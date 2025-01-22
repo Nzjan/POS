@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:intl/intl.dart'; // Added for DateFormat
+import 'package:intl/intl.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HeaderBar extends StatelessWidget {
   final String title;
@@ -18,10 +19,12 @@ class HeaderBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Container(
       color: Colors.white,
-      margin: const EdgeInsets.only(left: 70),
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      //margin: EdgeInsets.only(left: 70.w),
+      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -30,51 +33,51 @@ class HeaderBar extends StatelessWidget {
               GestureDetector(
                 onTap: onMenuTap,
                 child: Container(
-                  height: 37,
-                  width: 36,
-                  padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 6),
+                  height: 37.h,
+                  width: 36.w,
+                  padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 6.h),
                   decoration: BoxDecoration(
-                    color: Colors.white, // Simplified color
-                    borderRadius: BorderRadius.circular(9),
-                    border: Border.all(width: 0.6, color: const Color(0xffadadad)),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(9.r),
+                    border: Border.all(width: 0.6.w, color: const Color(0xffadadad)),
                   ),
                   child: const Icon(Iconsax.menu_1, color: Color(0xff3e3e3e)),
                 ),
               ),
-              const SizedBox(width: 18),
+              SizedBox(width: 18.w),
               Text(
                 title,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.black,
-                  fontSize: 24,
+                  fontSize: 24.sp,
                   fontFamily: 'Lato',
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              const Spacer(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    _formatDate(DateTime.now()),
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontFamily: 'Lato',
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  Text(
-                    _formatTime(DateTime.now()),
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14,
-                      fontFamily: 'Lato',
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              )
+              // const Spacer(),
+              // Column(
+              //   crossAxisAlignment: CrossAxisAlignment.end,
+              //   children: [
+              //     Text(
+              //       _formatDate(DateTime.now()),
+              //       style: TextStyle(
+              //         color: Colors.black,
+              //         fontSize: 18.sp,
+              //         fontFamily: 'Lato',
+              //         fontWeight: FontWeight.w500,
+              //       ),
+              //     ),
+              //     Text(
+              //       _formatTime(DateTime.now()),
+              //       style: TextStyle(
+              //         fontWeight: FontWeight.w500,
+              //         fontSize: 14.sp,
+              //         fontFamily: 'Lato',
+              //         color: Colors.black,
+              //       ),
+              //     ),
+              //   ],
+              // )
             ],
           ),
         ],
@@ -82,12 +85,10 @@ class HeaderBar extends StatelessWidget {
     );
   }
 
-  // Formats date to 'MMM d' format
   String _formatDate(DateTime dateTime) {
     return DateFormat('MMM d').format(dateTime);
   }
 
-  // Formats time to 'hh:mm a' (12-hour format with AM/PM)
   String _formatTime(DateTime dateTime) {
     final DateFormat formatter = DateFormat('hh:mm a');
     return formatter.format(dateTime);

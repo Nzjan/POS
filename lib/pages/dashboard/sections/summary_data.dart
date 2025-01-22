@@ -99,7 +99,7 @@ class _SummaryDataState extends State<SummaryData> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(height: 15.h), // Responsive height for spacing
+              Spacer(),
               Text(
                 title,
                 style: TextStyle(
@@ -109,7 +109,7 @@ class _SummaryDataState extends State<SummaryData> {
                   color: const Color(0xff818181),
                 ),
               ),
-              SizedBox(height: 5.h), // Responsive height for spacing
+              SizedBox(height: 3.h), // Responsive height for spacing
               Row(
                 children: [
                   Text(

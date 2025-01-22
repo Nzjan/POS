@@ -1,4 +1,5 @@
 
+import 'package:RMS/constants.dart';
 import 'package:RMS/services/dio_service.dart';
 import 'package:RMS/services/shared_preferences_helper.dart';
 import 'package:dio/dio.dart';
@@ -282,13 +283,13 @@ class _TablePageState extends State<TablePage> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding:  EdgeInsets.only(left: 97.w, top: 15.h),
+      padding: mainPadding,
       child: Row(
         children: [
           Expanded(
             flex: 4,
               child: Padding(
-                padding:  EdgeInsets.only(right: 23.w,),
+                padding:  EdgeInsets.only(right: 24.w,),
                 child: Column(
                   children: [
                     // Filters and Counters

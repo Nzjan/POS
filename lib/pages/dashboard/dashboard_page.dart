@@ -36,7 +36,7 @@ class _DashboardPageState extends State<DashboardPage> {
     return Container(
       color: const Color(0xffecf0f3),
       child: SingleChildScrollView(
-        padding: EdgeInsets.only(left: 94.w, right: 20.w, bottom: 20.h, top: 20.h), // Use responsive padding
+        padding: EdgeInsets.only(left: 24.w, right: 20.w, bottom: 20.h, top: 20.h), // Use responsive padding
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
