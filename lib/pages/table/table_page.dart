@@ -33,7 +33,7 @@ class _TablePageState extends State<TablePage> {
     final _dio=DioService();
      _dio.addToken(await SharedPreferencesHelper().getString("auth_token"));
      try{
-       final res=await _dio.getData("http://82.180.147.87:8080/api/v1/:en/table");
+       final res=await _dio.getData("/table");
        if(res.statusCode==200){
 
          final data=res.data;
@@ -325,28 +325,28 @@ class _TablePageState extends State<TablePage> {
                                   ),
                                   _buildFloorChooseButton(
                                     text: 'Floor 1',
-                                    selected: selectedFloor == 'Floor 1',
+                                    selected: selectedFloor == 'F-1',
                                     onPressed: () {
                                       setState(() {
-                                        selectedFloor = "Floor 1";
+                                        selectedFloor = "F-1";
                                       });
                                     },
                                   ),
                                   _buildFloorChooseButton(
                                     text: 'Floor 2',
-                                    selected: selectedFloor == 'Floor 2',
+                                    selected: selectedFloor == 'F-2',
                                     onPressed: () {
                                       setState(() {
-                                        selectedFloor = "Floor 2";
+                                        selectedFloor = "F-2";
                                       });
                                     },
                                   ),
                                   _buildFloorChooseButton(
                                     text: 'Floor 3',
-                                    selected: selectedFloor == 'Floor 3',
+                                    selected: selectedFloor == 'F-3',
                                     onPressed: () {
                                       setState(() {
-                                        selectedFloor = "Floor 3";
+                                        selectedFloor = "F-3";
                                       });
                                     },
                                   ),

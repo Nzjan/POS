@@ -328,7 +328,7 @@ class _FoodItemGridState extends State<FoodItemGrid> {
     _dio.addToken(await SharedPreferencesHelper().getString("auth_token"));
     try {
       final res =
-          await _dio.getData("http://82.180.147.87:8080/api/v1/:en/menu");
+          await _dio.getData("/menu");
       if (res.statusCode == 200) {
         final data = res.data;
         debugPrint(data["data"][0].toString());

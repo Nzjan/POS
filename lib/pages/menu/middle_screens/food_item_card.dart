@@ -22,7 +22,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
       onEnter: (_) => setState(() => isHovered = true),
       onExit: (_) => setState(() => isHovered = false),
       child: AnimatedContainer(
-        height: 219,
+        height: 230,
         width: 178,
         duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(

@@ -5,6 +5,7 @@ class DioService{
   Dio? dio;
 
   DioService():dio=Dio(BaseOptions(
+    baseUrl: "http://82.180.147.87:8080/api/v1/:en",
     headers: {
       "Accept":"application/json"
     }
@@ -19,8 +20,8 @@ class DioService{
     };
   }
 
-  Future<Response> getData(String url)async{
-    Response response=await dio!.get(url);
+  Future<Response> getData(String path)async{
+    Response response=await dio!.get(path);
     return response;
   }
 }
