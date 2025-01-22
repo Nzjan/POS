@@ -377,7 +377,8 @@ class _FoodItemGridState extends State<FoodItemGrid> {
   Widget build(BuildContext context) {
     final items = categoryItems[widget.selectedCategory] ?? [];
 
-    return SingleChildScrollView(
+    return Padding(padding: EdgeInsets.only(left: 8) ,
+    child: SingleChildScrollView(
       scrollDirection: Axis.vertical, // Ensure vertical scrolling
       child: Align(
         alignment: Alignment.topLeft, // Align the grid to the left
@@ -394,6 +395,7 @@ class _FoodItemGridState extends State<FoodItemGrid> {
           ),
         ),
       ),
+      )
     );
   }
 }
