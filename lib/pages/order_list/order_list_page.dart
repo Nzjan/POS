@@ -60,7 +60,6 @@ class _OrderListPageState extends State<OrderListPage> {
         'waiter_name': 'Jane Smith',
         'price': '1500',
         'payment_conformation': 'Unpaid',
-
         'progress': '1/2',
         'items': [
           {'name': 'Pizza', 'quantity': 1, 'status': 'pending'},
