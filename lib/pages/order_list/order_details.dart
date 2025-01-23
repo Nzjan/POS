@@ -19,7 +19,6 @@ class OrderDetails extends StatelessWidget {
             Container(
               height: 72,
               width: 331,
-              padding: const EdgeInsets.only( bottom: 2),
               decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(color: Color(0xFFE5E7EB)),
@@ -29,33 +28,17 @@ class OrderDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
-                        color: const Color(0xFF272727),
-                        child: Text(
-                          order['type'],
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                            fontFamily: 'Lato',
-                          ),
-                        ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
+                    color: const Color(0xFF272727),
+                    child: Text(
+                      order['type'],
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                        fontFamily: 'Lato',
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        '${order['id']}',
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Lato',
-                        ),
-                      ),
-
-                    ],
+                    ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -80,7 +63,6 @@ class OrderDetails extends StatelessWidget {
                       ),
                     ],
                   )
-
                 ],
               ),
             ),
@@ -180,17 +162,10 @@ class OrderDetails extends StatelessWidget {
                               ],
                             ),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
                                   order['seated_time'],
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: 'Lato',
-                                  ),
-                                ),
-                                Text(
-                                  order['payment_time'],
                                   style: const TextStyle(
                                     fontSize: 14,
                                     fontFamily: 'Lato',
@@ -228,9 +203,9 @@ class OrderDetails extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 18),
+                              const SizedBox(height: 8),
                               Text(
-                                order['time'],
+                                order['order_time'],
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -251,7 +226,9 @@ class OrderDetails extends StatelessWidget {
                             ],
                           ),
                         ],
-                    ])),
+                    ]
+                )
+            ),
             const SizedBox(height: 16),
             Container(
                 height: 67,
@@ -336,9 +313,9 @@ class OrderDetails extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
+                      const Row(
                         children: [
-                          const Text(
+                          Text(
                             'Order ',
                             style: TextStyle(
                               fontSize: 16,
@@ -347,28 +324,18 @@ class OrderDetails extends StatelessWidget {
                               fontFamily: 'Lato',
                             ),
                           ),
-                          Text(
-                            '#${order['id']}',
-                            style:  const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'Lato',
-                            ),
-                          ),
                         ],
                       ),
                       Text(
-                        '${order['progress']}',
+                        '${order['total_order_items']}',
                         style: const TextStyle(
                           fontSize: 14,
                           fontFamily: 'Lato',
                         ),
                       ),
-
                     ],
                   ),
-
-                  const Divider(),
+                  const Divider(color: Color(0xffababab),),
                   Column(
                     children: List.generate(order['items'].length, (index) {
                       final item = order['items'][index];
@@ -395,31 +362,6 @@ class OrderDetails extends StatelessWidget {
                             ),
                           ],
                         ),
-                        trailing: item['status'] == 'ready'
-                            ? const Icon(
-                          Icons.check_circle,
-                          color: Colors.green,
-                          size: 18, // Adjust size as needed
-                        )
-                            : item['status'] == 'pending'
-                            ? const Icon(
-                          Icons.circle_outlined,
-                          color: Colors.grey,
-
-                          size: 18, // Adjust size as needed
-                        )
-                            : item['status'] == 'in progress'
-                            ? const Icon(
-                          Icons.timer_outlined,
-                          color: Colors.orange,
-                          size: 18, // Adjust size as needed
-                        )
-                            : const Icon(
-                          Icons.cancel, // Default icon if status doesn't match
-                          color: Colors.red,
-                          size: 18,
-                        ),
-
                       );
                     }),
                   ),

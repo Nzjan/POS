@@ -4,7 +4,6 @@ import 'package:iconsax/iconsax.dart';
 
 import 'order_details.dart';
 
-
 class OrderListPage extends StatefulWidget {
   const OrderListPage({super.key});
 
@@ -40,27 +39,28 @@ class _OrderListPageState extends State<OrderListPage> {
         'waiter_name': 'John Doe',
         'price': '1000',
         'payment_conformation': 'Paid',
-        'progress': '1/3',
+        'total_order_items': '3',
         'items': [
           {'name': 'Burger', 'quantity': 2, 'status': 'ready'},
+          {'name': 'Fries', 'quantity': 1, 'status': 'pending'},
           {'name': 'Fries', 'quantity': 1, 'status': 'pending'},
         ],
       },
       {
         'id': '124',
         'time': '1:00 PM',
-        'seated_time': '12:00 PM',
+        'seated_time': '1:00 PM',
         'payment_time': '9:45:23',
         'operation': 'Running Order',
         'type': 'Dine-in',
         'table_number': '10',
         'floor_number': '2',
         'table_capacity': '6',
-        'total_customer': '2',
+        'total_customer': '5',
         'waiter_name': 'Jane Smith',
         'price': '1500',
         'payment_conformation': 'Unpaid',
-        'progress': '1/2',
+        'total_order_items': '5',
         'items': [
           {'name': 'Pizza', 'quantity': 1, 'status': 'pending'},
           {'name': 'Soda', 'quantity': 1, 'status': 'ready'},
@@ -71,16 +71,16 @@ class _OrderListPageState extends State<OrderListPage> {
     [
       {
         'id': '125',
-        'time': '2:00 PM',
+        'order_time': '2:00 PM',
         'operation': 'Completed Order',
         'type': 'Take Away',
         'customer_name': 'Alice Brown',
-        'phone': '123-456-7890',
+        'phone': '9865134421',
         'price': '2000',
         'payment_status': 'Paid',
         'cook_status': 'Ready',
         'payment_conformation': 'Unpaid',
-        'progress': '2/2',
+        'total_order_items': '2',
         'items': [
           {'name': 'Pasta', 'quantity': 1, 'status': 'ready'},
           {'name': 'Garlic Bread', 'quantity': 2, 'status': 'ready'},
@@ -91,17 +91,17 @@ class _OrderListPageState extends State<OrderListPage> {
     [
       {
         'id': '126',
-        'time': '3:00 PM',
+        'order_time': '3:00 PM',
         'operation': 'Running Order',
         'type': 'Delivery',
         'customer_name': 'Bob White',
-        'phone': '098-765-4321',
+        'phone': '9865121212',
         'address': '123 Main St',
         'price': '1800',
         'payment_status': 'Pending',
         'payment_conformation': 'Paid',
         'cook_status': 'In Progress',
-        'progress': '1/3',
+        'total_order_items': '10',
         'items': [
           {'name': 'Salad', 'quantity': 1, 'status': 'pending'},
           {'name': 'Smoothie', 'quantity': 2, 'status': 'ready'},
@@ -160,6 +160,9 @@ class _OrderListPageState extends State<OrderListPage> {
                   ),
                   const SizedBox(height: 20),
                   Expanded(
+                    child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Align(alignment: Alignment.topLeft,
                     child: Wrap(
                       spacing: 20.0,
                       runSpacing: 20.0,
@@ -182,7 +185,8 @@ class _OrderListPageState extends State<OrderListPage> {
                       }),
                     ),
                   ),
-                ],
+                    )
+                  )],
               ),
             ),
             Container(
@@ -407,7 +411,6 @@ class OrderCard extends StatelessWidget {
           ],
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Top Header with Time
             if (order['type'] == 'Dine-in') ...[
@@ -470,15 +473,6 @@ class OrderCard extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            '#${order['id']}',
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Lato',
-                            ),
-                          ),
-                          const SizedBox(height: 4),
                           if (order['type'] == 'Dine-in') ...[
                             Row(
                               children: [
@@ -557,7 +551,7 @@ class OrderCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${order['progress']}',
+                        '${order['total_order_items']}',
                         style: const TextStyle(
                           fontSize: 14,
                           fontFamily: 'Lato',

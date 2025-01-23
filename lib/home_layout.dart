@@ -335,7 +335,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   Widget _getPageContent(int selectedPageIndex,) {
     switch (selectedPageIndex) {
       case 0:
-        return const ReservationPage();
+        return const OrderListPage();
       case 1:
         return const TablePage();
       case 2:

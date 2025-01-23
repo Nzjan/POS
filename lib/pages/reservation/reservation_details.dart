@@ -299,7 +299,7 @@ class _ReservationDetailsState extends State<ReservationDetails> {
                           ),
                         ),
                         Text(
-                          '${widget.reserve['payment_conformation']}',
+                          '${widget.reserve['payment_status']}',
                           style: const TextStyle(
                             fontSize: 14,
                             fontFamily: 'Lato',

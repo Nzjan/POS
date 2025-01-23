@@ -41,7 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Counter Name",
+                      "Counter 1",
                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
                     ),
                     SizedBox(height: 2),
@@ -65,53 +65,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    MouseRegion(
-                      onEnter: (details) => _onHover(details, 1),
-                      onExit: (details) => _onHover(details, 1),
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(_buttonColor1),
-                          foregroundColor: MaterialStateProperty.all(Colors.black),
-                          padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 12.h, horizontal: 10.w)), // Use ScreenUtil for padding
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.r), // Use ScreenUtil for radius
-                            side: const BorderSide(
-                              color: Color(0xFF292929),
-                              width: 1,
-                            ),
-                          )),
-                          textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w700)), // Use ScreenUtil for text size
-                        ),
-                        onPressed: () {},
-                        child: const Text("Close Movement"),
-                      ),
-                    ),
-                    SizedBox(width: 20.w), // Use ScreenUtil for spacing
-                    MouseRegion(
-                      onEnter: (details) => _onHover(details, 2),
-                      onExit: (details) => _onHover(details, 2),
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(_buttonColor2),
-                          foregroundColor: MaterialStateProperty.all(Colors.black),
-                          padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 12.h, horizontal: 10.w)),
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.r),
-                            side: const BorderSide(
-                              color: Color(0xFF292929),
-                              width: 1,
-                            ),
-                          )),
-                          textStyle: MaterialStateProperty.all(TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w700)),
-                        ),
-                        onPressed: () {},
-                        child: const Text("Register History"),
-                      ),
-                    ),
-                  ],
-                ),
+
               ],
             ),
             SizedBox(height: 21.h), // Use ScreenUtil for spacing
@@ -210,15 +164,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                 color: const Color(0xff585858),
                               ),
                             ),
-                            SizedBox(height: 10.h),
-                            Text(
-                              "Cash Sales",
-                              style: TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff585858),
-                              ),
-                            ),
                           ],
                         ),
                         Column(
@@ -277,7 +222,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ],
               ),
             ),
-            SizedBox(height: 26.h),
+            SizedBox(height: 20.h),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
               decoration: BoxDecoration(
@@ -306,10 +251,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 ],
               ),
             ),
-            SizedBox(height: 26.h),
-            const Divider(),
+            SizedBox(height: 20.h),
+            const Divider(color: Color(0xffd1d1d1),),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 7.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -365,7 +310,7 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 Container(
                   height: 107.h,
-                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.r),
                     border: Border.all(color: const Color(0xFF969696), width: 0.6.w),
@@ -384,10 +329,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 Positioned(
-                  top: -10.h,
+                  top: -14.h,
                   left: 10.w,
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                    padding: EdgeInsets.symmetric(horizontal: 8.w,),
                     color: Colors.white,
                     child:  Text(
                       "Notes",

@@ -30,63 +30,75 @@ class _ReservationPageState extends State<ReservationPage> {
         'reserve_no': 'R-0001',
         'customer': 'Mr. Bond',
         'total_customer': '3',
-        'payment_status': 'Successful',
+        'payment_status': 'Paid',
+        'reserve_status': 'Successful',
         'date': DateFormat('dd-MM-yyyy').format(DateTime.now()), // Today's Date
         'phone_no': '9456789012',
         'time': '16:00 - 17:00',
         'day_time': 'PM',
+        'total_amount': '100',
       },
       {
         'reserve_no': 'R-0002',
         'customer': 'Ms. Watson',
         'total_customer': '2',
-        'payment_status': 'Cancel',
+        'payment_status': 'Unpaid',
+        'reserve_status': 'Cancel',
         'date': DateFormat('dd-MM-yyyy').format(DateTime.now()), // Today's Date
         'phone_no': '9456789012',
         'time': '16:00 - 17:00',
         'day_time': 'PM',
+        'total_amount': '100',
       },
       // Tomorrow's Reservations
       {
         'reserve_no': 'R-0003',
         'customer': 'Mr. Doe',
         'total_customer': '4',
-        'payment_status': 'Successful',
+        'payment_status': 'Paid',
+        'reserve_status': 'Successful',
         'date': DateFormat('dd-MM-yyyy').format(DateTime.now().add(Duration(days: 1))), // Tomorrow's Date
         'phone_no': '9456789012',
         'time': '14:00 - 15:00',
         'day_time': 'PM',
+        'total_amount': '100',
       },
       {
         'reserve_no': 'R-0004',
         'customer': 'Ms. Green',
         'total_customer': '1',
-        'payment_status': 'Cancel',
+        'payment_status': 'Unpaid',
+        'reserve_status': 'Cancel',
         'date': DateFormat('dd-MM-yyyy').format(DateTime.now().add(Duration(days: 1))), // Tomorrow's Date
         'phone_no': '9456789012',
         'time': '18:00 - 19:00',
         'day_time': 'PM',
+        'total_amount': '100',
       },
       // Yesterday's Reservations
       {
         'reserve_no': 'R-0005',
         'customer': 'Mr. Black',
         'total_customer': '5',
-        'payment_status': 'Successful',
+        'payment_status': 'Paid',
+        'reserve_status': 'Successful',
         'date': DateFormat('dd-MM-yyyy').format(DateTime.now().subtract(Duration(days: 1))), // Yesterday's Date
         'phone_no': '9456789012',
         'time': '12:00 - 13:00',
         'day_time': 'PM',
+        'total_amount': '100',
       },
       {
         'reserve_no': 'R-0006',
         'customer': 'Mrs. White',
         'total_customer': '2',
-        'payment_status': 'Cancel',
+        'payment_status': 'Unpaid',
+        'reserve_status': 'Cancel',
         'date': DateFormat('dd-MM-yyyy').format(DateTime.now().subtract(Duration(days: 1))), // Yesterday's Date
         'phone_no': '9456789012',
         'time': '10:00 - 11:00',
         'day_time': 'AM',
+        'total_amount': '100',
       },
     ],
     // Reservation History
@@ -95,7 +107,8 @@ class _ReservationPageState extends State<ReservationPage> {
         'reserve_no': 'R-0007',
         'customer': 'Mr. Smith',
         'total_customer': '1',
-        'payment_status': 'Successful',
+        'payment_status': 'Paid',
+        'reserve_status': 'Successful',
         'date': '20-03-2024',
         'phone_no': '9456789012',
         'time': '16:00 - 17:00',
@@ -107,7 +120,8 @@ class _ReservationPageState extends State<ReservationPage> {
         'reserve_no': 'R-0008',
         'customer': 'Mrs. Green',
         'total_customer': '5',
-        'payment_status': 'Cancel',
+        'payment_status': 'Unpaid',
+        'reserve_status': 'Cancel',
         'date': '10-05-2023',
         'phone_no': '9456789012',
         'time': '16:00 - 17:00',
@@ -185,7 +199,7 @@ class _ReservationPageState extends State<ReservationPage> {
 
       // Apply status filter for Reservation History
       filteredContent = filteredContent.where((reserve) =>
-      reserve['payment_status'] == selectedStatus).toList();
+      reserve['reserve_status'] == selectedStatus).toList();
     }
 
     return filteredContent;
@@ -423,10 +437,10 @@ class _ReservationPageState extends State<ReservationPage> {
                                               children: [
                                                 if (selectedIndex == 1)
                                                   Icon(
-                                                    reserve['payment_status'] == 'Successful'
+                                                    reserve['reserve_status'] == 'Successful'
                                                         ? Icons.check_circle
                                                         : Icons.cancel,
-                                                    color: reserve['payment_status'] == 'Successful'
+                                                    color: reserve['reserve_status'] == 'Successful'
                                                         ? Color(0xff00d03e)
                                                         : Color(0xffFF3232),
                                                     size: 18,
