@@ -229,20 +229,33 @@ class _ReservationPageState extends State<ReservationPage> {
                             // Search Field
                             Expanded(
                               flex: 3,
-                              child: TextField(
-                                onChanged: (value) {
-                                  setState(() {
-                                    searchQuery = value;
-                                  });
-                                },
-                                decoration: InputDecoration(
-                                  prefixIcon: const Icon(Icons.search),
-                                  hintText: 'Search by reservation number or customer name',
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8),
+                              child: Container(
+                                height: 46,
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.grey, // Set the border color
+                                    width: 1.0, // Set the border width
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0), // Optional: Set border radius for rounded corners
+                                ),
+                                child: Align(
+                                  alignment: Alignment.center, // This ensures vertical (and horizontal) centering
+                                  child: TextField(
+                                    onChanged: (value) {
+                                      setState(() {
+                                        searchQuery = value;
+                                      });
+                                    },
+                                    decoration: InputDecoration(
+                                      prefixIcon: const Icon(Icons.search),
+                                      hintText: 'Search',
+                                      border: InputBorder.none, // Disable the default border
+                                    ),
                                   ),
                                 ),
                               ),
+
                             ),
                             const SizedBox(width: 16),
                             // Day Filter Dropdown for Upcoming Reservation
@@ -272,7 +285,7 @@ class _ReservationPageState extends State<ReservationPage> {
                                     },
                                     isExpanded: true,
                                     underline: const SizedBox(),
-                                    hint: const Center(child: Text("Select Day")),
+                                    hint: const Center(child: Text("Day")),
                                   ),
                                 ),
                               ),
@@ -307,7 +320,7 @@ class _ReservationPageState extends State<ReservationPage> {
                                       child: Text(
                                         selectedDate == null
                                             ? 'Select Date'
-                                            : 'Date: ${selectedDate!.toLocal()}'.split(' ')[0],
+                                            : '${selectedDate!.toLocal()}'.split(' ')[0],
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 14,
@@ -414,11 +427,11 @@ class _ReservationPageState extends State<ReservationPage> {
                                                         ? Icons.check_circle
                                                         : Icons.cancel,
                                                     color: reserve['payment_status'] == 'Successful'
-                                                        ? Colors.green
-                                                        : Colors.red,
+                                                        ? Color(0xff00d03e)
+                                                        : Color(0xffFF3232),
                                                     size: 18,
                                                   ),
-                                                SizedBox(width: 2,),
+                                                SizedBox(width: 6,),
                                                 Text(
                                                   reserve['reserve_no']!,
                                                   style: const TextStyle(
