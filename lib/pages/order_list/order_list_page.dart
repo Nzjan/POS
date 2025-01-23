@@ -1,7 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../services/dio_service.dart';
+import '../../services/shared_preferences_helper.dart';
 import 'order_details.dart';
 
 class OrderListPage extends StatefulWidget {
@@ -109,6 +112,41 @@ class _OrderListPageState extends State<OrderListPage> {
       },
     ],
   ];
+
+  void fetchTableData()async{
+    final _dio=DioService();
+    _dio.addToken(await SharedPreferencesHelper().getString("auth_token"));
+    try{
+      final res=await _dio.getData("/menu");
+      if(res.statusCode==200){
+
+        final data=res.data;
+        debugPrint(data["data"][0].toString());
+        if(data["success"]==true){
+          List <Map<String,dynamic>> temp=[];
+          for(int i=0;i<data["data"].length;i++){
+            String status = data["data"][i]["status"];
+            status = status[0].toUpperCase() + status.substring(1);
+            debugPrint("data : ${data['data'][i]}");
+            temp.add({'status':status, 'number': data["data"][i]["name"], 'floor': data["data"][i]["floorPlan"]["name"], 'capacity':data["data"][i]["capacity"] },);
+          }
+          setState(() {
+            //tabContent=temp;
+          });
+        }
+      }
+    }on DioException catch(e){
+      debugPrint("Dio Exception");
+    }catch(e){
+      debugPrint(e.toString());
+    }
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    fetchTableData();
+  }
 
   void _onTabSelected(int index) {
     setState(() {

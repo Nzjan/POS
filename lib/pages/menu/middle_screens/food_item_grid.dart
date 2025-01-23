@@ -327,8 +327,7 @@ class _FoodItemGridState extends State<FoodItemGrid> {
     final _dio = DioService();
     _dio.addToken(await SharedPreferencesHelper().getString("auth_token"));
     try {
-      final res =
-          await _dio.getData("/menu");
+      final res = await _dio.getData("/menu");
       if (res.statusCode == 200) {
         final data = res.data;
         debugPrint(data["data"][0].toString());

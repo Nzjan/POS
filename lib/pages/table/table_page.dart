@@ -35,7 +35,6 @@ class _TablePageState extends State<TablePage> {
      try{
        final res=await _dio.getData("/table");
        if(res.statusCode==200){
-
          final data=res.data;
          debugPrint(data["data"][0].toString());
          if(data["success"]==true){
