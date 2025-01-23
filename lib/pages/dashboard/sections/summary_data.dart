@@ -72,13 +72,13 @@ class _SummaryDataState extends State<SummaryData> {
       children: [
         // The main container that holds text and other content
         Container(
-          height: 97.h, // Using ScreenUtil for responsive height
-          width: 214.w, // Using ScreenUtil for responsive width
+          height: 97.h,
+          width: 214.w,
           padding:
-          EdgeInsets.only(top: 12.h, left: 12.w, right: 12.w, bottom: 8.h), // Using ScreenUtil for responsive padding
+          EdgeInsets.only(top: 3.h, left: 12.w, right: 12.w, bottom: 2.h),
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(8.r), // Responsive border radius
+            borderRadius: BorderRadius.circular(8.r),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.2),
@@ -94,12 +94,11 @@ class _SummaryDataState extends State<SummaryData> {
                 value,
                 style: TextStyle(
                   color: const Color(0xff333333),
-                  fontSize: 24.sp, // Responsive font size
+                  fontSize: 24.sp,
                   fontFamily: 'Lato',
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              Spacer(),
               Text(
                 title,
                 style: TextStyle(
