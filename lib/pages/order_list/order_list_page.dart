@@ -27,7 +27,6 @@ class _OrderListPageState extends State<OrderListPage> {
     // Tab 1: Running Orders
     [
       {
-        'id': '123',
         'time': '12:00 PM',
         'seated_time': '12:00 PM',
         'payment_time': '1:45:23',
@@ -422,7 +421,7 @@ class OrderCard extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    order['time'],
+                    order['seated_time'],
                     style: const TextStyle(
                       fontSize: 14,
                       color: Colors.black,

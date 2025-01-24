@@ -126,8 +126,7 @@ class _OpeningCashDialogState extends State<OpeningCashDialog> {
                           SizedBox(width: 6.w),
                           Text("|", style: TextStyle(color: Color(0xff333333))),
                           SizedBox(width: 6.w),
-                          Text(
-                            "23-08-2024",
+                          Text("23-08-2024",
                             style: TextStyle(
                               color: Color(0xff333333),
                               fontSize: 16.sp, // Responsive font size
@@ -140,7 +139,7 @@ class _OpeningCashDialogState extends State<OpeningCashDialog> {
                   ),
                 ],
               ),
-              SizedBox(height: 40.h),
+              SizedBox(height: 30.h),
 
               // Opening Cash Input Field
               Stack(

@@ -124,8 +124,8 @@ class _ReservationPageState extends State<ReservationPage> {
       selectedIndex = index;
       selectedReserve = null;
       searchQuery = '';
-      selectedStatus = 'Successful'; // Reset to default filter for Reservation History
-      selectedDay = 'Today'; // Reset to default filter for Upcoming Reservation
+      selectedStatus = 'Successful';
+      selectedDay = 'Today';
       selectedDate = null;
     });
   }

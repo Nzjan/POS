@@ -42,7 +42,7 @@ class _EntryPageState extends State<EntryPage> {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          FluentPageRoute(builder: (context) =>  HomeLayout()),
+          FluentPageRoute(builder: (context) =>  LoginScreen()),
         );
       }
     });

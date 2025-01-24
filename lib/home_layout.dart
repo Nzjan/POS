@@ -32,6 +32,22 @@ class _HomeLayoutState extends State<HomeLayout> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(const Duration(seconds: 0), () {
+      if (mounted) {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) {
+            return const OpeningCashDialog();
+          },
+        );
+      }
+    });
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
