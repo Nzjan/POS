@@ -5,7 +5,7 @@ final loginStateProvider = StateNotifierProvider<LoginStateNotifier, LoginState>
   return LoginStateNotifier();
 });
 
-//
+//v
 class LoginState {
   final bool isLoading;
   final String errorMessage;
