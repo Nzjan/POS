@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:RMS/services/shared_preferences_helper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio/dio.dart';
-import 'package:RMS/view/home_layout.dart';
+import 'package:RMS/view/home/home_layout.dart';
 
 
 class LoginScreen extends StatefulWidget {

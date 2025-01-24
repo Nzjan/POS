@@ -1,5 +1,5 @@
 import 'package:RMS/view/dashboard/dashboard_page.dart';
-import 'package:RMS/view/header_bar.dart';
+import 'package:RMS/view/home/header_bar.dart';
 import 'package:RMS/view/menu/menu_page.dart';
 import 'package:RMS/view/order_list/order_list_page.dart';
 import 'package:RMS/view/register/register_page.dart';
@@ -9,9 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'login_screen.dart';
-
-
+import '../auth/login_screen.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
