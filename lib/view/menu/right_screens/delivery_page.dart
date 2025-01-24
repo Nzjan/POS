@@ -1,18 +1,17 @@
-
-import 'package:RMS/pages/menu/right_screens/bill_summary_confirm_order.dart';
-import 'package:RMS/pages/menu/right_screens/bill_summary_takeaway_invoice.dart';
-import 'package:RMS/pages/menu/right_screens/dash_board_painter.dart';
-import 'package:RMS/pages/menu/right_screens/payment_method.dart';
+import 'package:RMS/view/menu/right_screens/bill_summary_confirm_order.dart';
+import 'package:RMS/view/menu/right_screens/bill_summary_takeaway_invoice.dart';
+import 'package:RMS/view/menu/right_screens/dash_board_painter.dart';
+import 'package:RMS/view/menu/right_screens/payment_method.dart';
 import 'package:flutter/material.dart';
 
-class TakeAwayPage extends StatefulWidget {
-  const TakeAwayPage({super.key});
+class DeliveryPage extends StatefulWidget {
+  const DeliveryPage({super.key});
 
   @override
-  _TakeAwayPageState createState() => _TakeAwayPageState();
+  _DeliveryPageState createState() => _DeliveryPageState();
 }
 
-class _TakeAwayPageState extends State<TakeAwayPage> {
+class _DeliveryPageState extends State<DeliveryPage> {
   bool _isHovered = false; // Track hover state
 
   @override
@@ -77,7 +76,8 @@ class _TakeAwayPageState extends State<TakeAwayPage> {
             borderRadius: BorderRadius.circular(24), // Set the border radius to 24
           ),
           contentPadding: EdgeInsets.zero, // Zero padding inside the dialog box
-          content: SingleChildScrollView(child: Container(
+          content: SingleChildScrollView(
+            child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(24), // Rounded corners for the container
@@ -121,7 +121,7 @@ class _TakeAwayPageState extends State<TakeAwayPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Take Away",
+                                "Delivery",
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
@@ -400,12 +400,13 @@ class _TakeAwayPageState extends State<TakeAwayPage> {
                 ],
               ),
             ),
-          ),)
+          ) ,),
         );
       },
     );
   }
 }
+
 void _showConfirmPayment(BuildContext context) {
   showDialog(
     context: context,
@@ -451,67 +452,67 @@ void _showConfirmPayment(BuildContext context) {
                 const SizedBox(
                   width: 395,
                   child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Order No.",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff292929),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Order No.",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff292929),
+                            ),
                           ),
-                        ),
-                        Text(
-                          "Payment Method",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff292929),
+                          Text(
+                            "Payment Method",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff292929),
+                            ),
                           ),
-                        ),
-                        Text(
-                          "Payment Time",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff292929),
+                          Text(
+                            "Payment Time",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff292929),
+                            ),
                           ),
-                        ),
 
 
-                      ],
-                    ),
+                        ],
+                      ),
 
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          "#1123",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff5a5a5a),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            "#1123",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff5a5a5a),
+                            ),
                           ),
-                        ),
-                        Text(
-                          "Cash",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff5a5a5a),
+                          Text(
+                            "Cash",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff5a5a5a),
+                            ),
                           ),
-                        ),
-                        Text(
-                          "Cash",
+                          Text(
+                            "Cash",
 
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 60,),
 
@@ -906,8 +907,6 @@ void _showPrintInvoice(BuildContext context) {
                     ),
                   ),
                 )
-                
-
               ],
             ),
           ),

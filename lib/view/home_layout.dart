@@ -1,17 +1,17 @@
-import 'package:RMS/pages/header_bar.dart';
+import 'package:RMS/view/dashboard/dashboard_page.dart';
+import 'package:RMS/view/header_bar.dart';
+import 'package:RMS/view/menu/menu_page.dart';
+import 'package:RMS/view/order_list/order_list_page.dart';
+import 'package:RMS/view/register/register_page.dart';
+import 'package:RMS/view/reservation/reservation_page.dart';
+import 'package:RMS/view/table/table_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'login_screen.dart';
-import 'opening_cash_dialog.dart';
-import 'package:RMS/pages/dashboard/dashboard_page.dart';
-import 'package:RMS/pages/table/table_page.dart';
-import 'package:RMS/pages/menu/menu_page.dart';
-import 'package:RMS/pages/order_list/order_list_page.dart';
-import 'package:RMS/pages/reservation/reservation_page.dart';
-import 'package:RMS/pages/register/register_page.dart';
+
+
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -31,22 +31,22 @@ class _HomeLayoutState extends State<HomeLayout> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-
-    Future.delayed(const Duration(seconds: 0), () {
-      if (mounted) {
-        showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (context) {
-            return const OpeningCashDialog();
-          },
-        );
-      }
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //
+  //   Future.delayed(const Duration(seconds: 0), () {
+  //     if (mounted) {
+  //       showDialog(
+  //         context: context,
+  //         barrierDismissible: false,
+  //         builder: (context) {
+  //           return const OpeningCashDialog();
+  //         },
+  //       );
+  //     }
+  //   });
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -351,7 +351,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   Widget _getPageContent(int selectedPageIndex,) {
     switch (selectedPageIndex) {
       case 0:
-        return const DashboardPage();
+        return const MenuPage();
       case 1:
         return const TablePage();
       case 2:

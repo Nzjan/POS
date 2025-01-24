@@ -1,12 +1,12 @@
-
-import 'package:RMS/constants.dart';
 import 'package:RMS/services/dio_service.dart';
 import 'package:RMS/services/shared_preferences_helper.dart';
+import 'package:RMS/view/table/floor_select_bar.dart';
+import 'package:RMS/view/table/table_select_bar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:RMS/pages/table/floor_select_bar.dart';
-import 'package:RMS/pages/table/table_select_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../constants.dart';
 
 class TablePage extends StatefulWidget {
   const TablePage({super.key});

@@ -1,10 +1,10 @@
+import 'package:RMS/view/dashboard/sections/guest_flow_analysis.dart';
+import 'package:RMS/view/dashboard/sections/most_ordered_dishes.dart';
+import 'package:RMS/view/dashboard/sections/order_type.dart';
+import 'package:RMS/view/dashboard/sections/register_status.dart';
+import 'package:RMS/view/dashboard/sections/table_status.dart';
+import 'package:RMS/view/dashboard/sections/total_sales.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import ScreenUtil
-import 'package:RMS/pages/dashboard/sections/guest_flow_analysis.dart';
-import 'package:RMS/pages/dashboard/sections/most_ordered_dishes.dart';
-import 'package:RMS/pages/dashboard/sections/order_type.dart';
-import 'package:RMS/pages/dashboard/sections/register_status.dart';
-import 'package:RMS/pages/dashboard/sections/table_status.dart';
-import 'package:RMS/pages/dashboard/sections/total_sales.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 // Sections
@@ -47,7 +47,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   // Header Bar
 
                   // First section: Summary and Overall Sales
-                  SummaryData(),
+                  const SummaryData(),
                   SizedBox(height: 20.h), // Use responsive spacing
                   UpcomingReservations(),
                   SizedBox(height: 20.h),
@@ -94,7 +94,7 @@ class _DashboardPageState extends State<DashboardPage> {
             // Right Side Content (Order Status)
             SizedBox(
               width: 418.w, // Use responsive width
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   OrderStatus(),

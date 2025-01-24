@@ -1,5 +1,6 @@
-import 'package:RMS/pages/register/reservation_details_copy.dart';
-import 'package:RMS/pages/reservation/reservation_form.dart';
+
+import 'package:RMS/view/register/reservation_details_copy.dart';
+import 'package:RMS/view/reservation/reservation_form.dart';
 import 'package:flutter/material.dart';
 
 

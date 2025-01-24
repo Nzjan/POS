@@ -1,4 +1,4 @@
-import 'package:RMS/pages/reservation/reservation_details.dart';
+import 'package:RMS/view/reservation/reservation_details.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

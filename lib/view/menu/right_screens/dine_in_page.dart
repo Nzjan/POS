@@ -1,4 +1,4 @@
-import 'package:RMS/pages/menu/right_screens/bill_summary_confirm_order.dart';
+import 'package:RMS/view/menu/right_screens/bill_summary_confirm_order.dart';
 import 'package:flutter/material.dart';
 
 class DineInPage extends StatefulWidget {

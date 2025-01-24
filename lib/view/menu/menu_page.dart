@@ -1,6 +1,6 @@
-import 'package:RMS/pages/menu/right_screens/right.dart';
+import 'package:RMS/view/menu/middle_screens/category_section.dart';
+import 'package:RMS/view/menu/right_screens/right.dart';
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:RMS/pages/menu/middle_screens/category_section.dart';
 import 'middle_screens/food_item_grid.dart';
 import 'middle_screens/table_running_card.dart';
 

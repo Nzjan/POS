@@ -1,6 +1,5 @@
-import 'package:RMS/pages/menu/right_screens/delivery_page.dart';
-import 'package:RMS/pages/menu/right_screens/dine_in_page.dart';
-import 'package:RMS/pages/menu/right_screens/take_away_page.dart';
+import 'package:RMS/view/menu/right_screens/dine_in_page.dart';
+import 'package:RMS/view/menu/right_screens/take_away_page.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:intl/intl.dart';
 
